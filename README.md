@@ -8,3 +8,7 @@ Educational Platform for learning with No Limits
 - Eslam Khalifa
 - Mohammed Rehab
 - Mostafa Elabady
+
+# Links:
+- [Requirements](./Requirements/)
+- [Designs](./Design/)
