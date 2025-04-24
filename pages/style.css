@@ -1,0 +1,154 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #f9f9f9;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+}
+
+div.content-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+div.content-container div.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+div.content-container img.background-right,
+div.content-container img.background-left {
+    position: absolute;
+    z-index: -1;
+    height: auto;
+    max-width: 120%;
+    opacity: 1;
+}
+
+div.content-container img.background-right {
+    top: -50px;
+    left: -456px;
+    transform: rotate(-16.25deg) scale(0.82);
+}
+
+div.content-container img.background-left {
+    top: -48px;
+    right: -454px;
+    transform: rotate(16.25deg) scale(0.82);
+}
+
+div.content-container div.content div.logo {
+    margin-top: 64px;
+}
+
+div.content-container div.content div.login h1.login-header {
+    margin-top: 70px;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 500;
+    color: #3a3a3a;
+}
+
+div.content-container div.content div.login div.login-box {
+    background: #f5f7fa;
+    margin-top: 25px;
+    width: 380px;
+    padding: 27px;
+    border: 1px solid #3a3a3a;
+    border-radius: 10px;
+}
+
+div.content-container div.content div.login div.login-box form {
+    display: flex;
+    flex-direction: column;
+}
+
+div.content-container div.content div.login div.login-box form input[type="email"],
+div.content-container div.content div.login div.login-box form input[type="password"] {
+    color: #b6b6b6;
+    padding: 10px;
+    border: 1px solid #3a3a3a;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 100;
+}
+
+div.content-container div.content div.login div.login-box form input[type="email"] {
+    margin-bottom: 8px;
+}
+
+div.content-container div.content div.login div.login-box form input[type="password"] {
+    margin-bottom: 15px;
+}
+
+div.content-container div.content div.login div.login-box form div.options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+div.content-container div.content div.login div.login-box form div.options div.remember-me label {
+    font-size: 15px;
+}
+
+div.content-container div.content div.login div.login-box form div.options a {
+    text-decoration: underline;
+    color: #3a3a3a;
+    font-weight: 500;
+}
+
+div.content-container div.content div.login div.login-box form button {
+    background-color: #2395F8;
+    margin: auto;
+    margin-top: 0;
+    margin-bottom: 10px;
+    width: 250px;
+    color: white;
+    padding: 3px;
+    border: 2px solid transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    -webkit-transition: background-color 0.3s ease, color 0.3s ease;
+    -moz-transition: background-color 0.3s ease, color 0.3s ease;
+    -ms-transition: background-color 0.3s ease, color 0.3s ease;
+    -o-transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+div.content-container div.content div.login div.login-box form button:hover {
+    background-color: white;
+    color: #2395F8;
+    border: 2px solid #2395F8;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    -webkit-transition: background-color 0.3s ease, color 0.3s ease;
+    -moz-transition: background-color 0.3s ease, color 0.3s ease;
+    -ms-transition: background-color 0.3s ease, color 0.3s ease;
+    -o-transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+div.content-container div.content div.login p.signup-text {
+    text-align: center;
+    font-size: 13px;
+    margin-top: 22px;
+}
+
+div.content-container div.content div.login p.signup-text a {
+    color: #2395F8;
+    text-decoration: underline;
+}
