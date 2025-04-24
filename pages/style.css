@@ -85,7 +85,55 @@ div.primary-form {
     width: fit-content;
 }
 
-input.box-primary {
+div.select-wrapper {
+    position: relative;
+}
+
+div.select-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    width: 16px;
+    height: 16px;
+    background-image: url('images/down-arrow.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+div.file-upload {
+    position: relative;
+}
+
+div.file-upload::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    width: 16px;
+    height: 16px;
+    background-image: url('images/up-arrow.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: translateY(-50%);
+    pointer-events: none;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+}
+
+select.box-primary {
+    appearance: none;
+    cursor: pointer;
+}
+
+input.box-primary,
+select.box-primary {
     width: 100%;
     padding: 10px 15px;
     border: 1px solid var(--text-primary);
@@ -96,7 +144,12 @@ input.box-primary {
     font-weight: 100;
 }
 
-input.box-primary::placeholder {
+select.box-primary > option {
+    color: var(--text-primary);
+}
+
+input.box-primary::placeholder,
+select.box-primary::placeholder {
     color: var(--text-secondary);
     font-weight: lighter;
 }
@@ -138,6 +191,36 @@ a.primary {
     font-weight: 500;
 }
 
+a.secondary {
+    color: var(--button-primary);
+    text-decoration: none;
+    background-color: var(--button-secondary);
+    padding: 10px 15px;
+    border: 2px solid transparent;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    font-weight: 500;
+    transition: border 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    -webkit-transition: border 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    -moz-transition: border 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    -ms-transition: border 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    -o-transition: border 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+a.secondary:hover {
+    color: var(--light-primary);
+    background-color: var(--button-background);
+    border: 2px solid var(--light-primary);
+    transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+    -webkit-transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+    -moz-transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+    -ms-transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+    -o-transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+}
+
 a.tertiary {
     text-decoration: underline;
     color: var(--text-primary);
@@ -147,6 +230,33 @@ a.tertiary {
 label.primary {
     font-weight: lighter;
     color: var(--text-primary);
+}
+
+label.upload-btn {
+    display: inline-block;
+    padding: 10px 10px;
+    background-color: var(--button-primary);
+    border: 1px dashed var(--text-primary);
+    border-radius: 6px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    -webkit-transition: background-color 0.3s ease, color 0.3s ease;
+    -moz-transition: background-color 0.3s ease, color 0.3s ease;
+    -ms-transition: background-color 0.3s ease, color 0.3s ease;
+    -o-transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+label.upload-btn:hover {
+    background-color: var(--light-primary);
+    color: var(--button-background);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    -webkit-transition: background-color 0.3s ease, color 0.3s ease;
+    -moz-transition: background-color 0.3s ease, color 0.3s ease;
+    -ms-transition: background-color 0.3s ease, color 0.3s ease;
+    -o-transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 div.login-box {
@@ -203,4 +313,66 @@ div.container > div.content > div.login > p.signup-text {
     text-align: center;
     font-size: 13px;
     margin-top: 22px;
+}
+
+
+/* Teacher Sign Up */
+div.container > div.content > div.signup-form > form#teacherSignupForm > div.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 10px;
+}
+
+div.container > div.content > div.signup-form > form#teacherSignupForm > div.form-row > div.form-group-horizontal > div.date-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px;
+}
+
+div.container > div.content > div.signup-form > form#teacherSignupForm > div.form-row > div.form-group-horizontal > div.password-requirements {
+    margin-top: 10px;
+    margin-left: 7px;
+    font-size: 0.875rem;
+}
+
+div.container > div.content > div.signup-form > form#teacherSignupForm > div.form-row > div.form-group-vertical {
+    display: flex;
+    flex-direction: column;
+}
+
+div.container > div.content > div.signup-form > form#teacherSignupForm > div.form-row > div.form-group-vertical > div.form-group-horizontal {
+    margin-bottom: 10px;
+}
+
+div.container > div.content > div.signup-form > form#teacherSignupForm > div.form-row > div.form-group-horizontal-vertical > div.form-group-horizontal > div.file-upload > input[type="file"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+
+div.container > div.content > div.signup-form > form#teacherSignupForm > div.submit {
+    text-align: center;
+}
+
+div.container > div.content > div.signup-form > form#teacherSignupForm > div.submit > button.submit-btn {
+    font-size: 16px;
+    margin-top: 10px;
+    width: 30%;
+}
+
+div.container > div.content > div.form-footer {
+    color: var(--text-primary);
+    margin-top: 5px;
+    text-align: center;
+    font-size: 0.875rem;
+}
+
+div.container > div.content > div.form-footer > p {
+    margin-bottom: 15px;
+}
+
+div.container > div.content > div.form-footer > p > a.secondary {
+    font-size: 20px;
 }
