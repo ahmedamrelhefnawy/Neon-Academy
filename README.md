@@ -1,4 +1,4 @@
-# Neon-Academy
+# Neuracademy
 Educational Platform for learning with No Limits
 
 # Members:
