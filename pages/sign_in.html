@@ -17,7 +17,7 @@
     </head>
 
     <body>
-        <div class="content-container">
+        <div class="container">
             <img class="background-right" src="images/Background-Educational-Pattern.png" alt="Background Pattern" />
             <img class="background-left" src="images/Background-Educational-Pattern.png" alt="Background Pattern" />
             <div class="content">
@@ -25,28 +25,28 @@
                     <img src="images/logo.png" alt="NeurAcademy Logo" />
                 </div>
                 <div class="login">
-                    <h1 class="login-header">Sign In</h1>
+                    <h2 class="main-header login-header">Sign In</h2>
                     <div class="login-box">
                         <form>
-                            <label>Email</label>
-                            <input type="email" placeholder="Enter your email" />
-                            <label>Password</label>
-                            <input type="password" placeholder="Enter your Password" />
+                            <label class="primary" for="email">Email</label>
+                            <input class="box-primary" type="email" id="email" placeholder="Enter your email" />
+                            <label class="primary" for="password">Password</label>
+                            <input class="box-primary" type="password" id="password" placeholder="Enter your Password" />
                             <div class="options">
                                 <div class="remember-me">
                                     <input type="checkbox" id="remember-me"/>
-                                    <label for="remember-me">
+                                    <label class="primary" for="remember-me">
                                         Remember me
                                     </label>
                                 </div>
-                                <a href="#">Forgot your password?</a>
+                                <a class="tertiary" href="#">Forgot your password?</a>
                             </div>
-                            <button type="submit">Sign in</button>
+                            <button class="primary" type="submit">Sign in</button>
                         </form>
                     </div>
                     <p class="signup-text">
                         <span>Don't have an account?</span>
-                        <a href="#">Sign up</a>
+                        <a class="primary" href="teacher_sign_up.html">Sign Up</a>
                     </p>
                 </div>
             </div>
