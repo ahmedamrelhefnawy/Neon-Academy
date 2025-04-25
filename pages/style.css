@@ -32,6 +32,12 @@ body {
     font-weight: 600;
 }
 
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 div.container {
     display: flex;
     align-items: center;
@@ -127,13 +133,13 @@ div.file-upload::after {
     -o-transform: translateY(-50%);
 }
 
-select.box-primary {
+select.input-primary {
     appearance: none;
     cursor: pointer;
 }
 
-input.box-primary,
-select.box-primary {
+input.input-primary,
+select.input-primary {
     width: 100%;
     padding: 10px 15px;
     border: 1px solid var(--text-primary);
@@ -144,12 +150,12 @@ select.box-primary {
     font-weight: 100;
 }
 
-select.box-primary > option {
+select.input-primary > option {
     color: var(--text-primary);
 }
 
-input.box-primary::placeholder,
-select.box-primary::placeholder {
+input.input-primary::placeholder,
+select.input-primary::placeholder {
     color: var(--text-secondary);
     font-weight: lighter;
 }
@@ -259,7 +265,7 @@ label.upload-btn:hover {
     -o-transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-div.login-box {
+div.form-box {
     background: var(--light-secondary);
     padding: 20px;
     border: 1px solid var(--text-primary);
@@ -271,25 +277,25 @@ div.container > div.content > div.login > h2.login-header {
     margin-top: 60px;
 }
 
-div.container > div.content > div.login > div.login-box {
+div.container > div.content > div.login > div.form-box {
     margin-top: 25px;
     width: 380px;
 }
 
-div.container > div.content > div.login > div.login-box > form {
+div.container > div.content > div.login > div.form-box > form {
     display: flex;
     flex-direction: column;
 }
 
-div.container > div.content > div.login > div.login-box > form > input[type="email"] {
+div.container > div.content > div.login > div.form-box > form > input[type="email"] {
     margin-bottom: 8px;
 }
 
-div.container > div.content > div.login > div.login-box > form > input[type="password"] {
+div.container > div.content > div.login > div.form-box > form > input[type="password"] {
     margin-bottom: 15px;
 }
 
-div.container > div.content > div.login > div.login-box > form > div.options {
+div.container > div.content > div.login > div.form-box > form > div.options {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -297,11 +303,11 @@ div.container > div.content > div.login > div.login-box > form > div.options {
     font-size: 14px;
 }
 
-div.container > div.content > div.login > div.login-box > form > div.options > div.remember-me > label {
+div.container > div.content > div.login > div.form-box > form > div.options > div.remember-me > label {
     font-size: 15px;
 }
 
-div.container > div.content > div.login > div.login-box > form > button {
+div.container > div.content > div.login > div.form-box > form > button {
     margin: auto;
     margin-top: 0;
     margin-bottom: 10px;
