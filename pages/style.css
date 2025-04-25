@@ -382,3 +382,32 @@ div.container > div.content > div.form-footer > p {
 div.container > div.content > div.form-footer > p > a.secondary {
     font-size: 20px;
 }
+
+
+/* Teacher Complete Account */
+div.container > div.content > div.logo.teacher-complete-account {
+    margin-bottom: 50px;
+}
+
+div.container > div.content > div.form-box {
+    width: 100%;
+}
+
+div.container > div.content > div.form-box > form > label.primary {
+    font-size: 16px;
+}
+
+div.container > div.content > div.form-box > form > div.authentication-requirements {
+    margin-top: 10px;
+    color: var(--text-primary);
+    font-weight: 100;
+    font-size: 12px;
+    margin-bottom: 100px;
+}
+
+div.container > div.content > div.form-box > form > button {
+    width: 30%;
+    font-size: 16px;
+    display: block;
+    margin: 0 auto;
+}
