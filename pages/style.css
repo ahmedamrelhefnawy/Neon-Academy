@@ -403,6 +403,7 @@ div.container > div.content > div.form-box > form > div.authentication-requireme
     font-weight: 100;
     font-size: 12px;
     margin-bottom: 100px;
+    padding-left: 10px;
 }
 
 div.container > div.content > div.form-box > form > button {
