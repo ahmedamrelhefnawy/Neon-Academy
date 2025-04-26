@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,19 +12,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-    <link rel="icon" href="images/icon.png" />
+    <link rel="icon" href="{% static 'images/icon.png' %}" />
 
-    <link rel="stylesheet" href="temp.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 
 <body>
     <div class="container center">
-        <img class="background-right" src="images/Background-Educational-Pattern.png" alt="Background Pattern" />
-        <img class="background-left" src="images/Background-Educational-Pattern.png" alt="Background Pattern" />
+        <img class="background-right" src="{% static 'images/Background-Educational-Pattern.png' %}" alt="Background Pattern" />
+        <img class="background-left" src="{% static 'images/Background-Educational-Pattern.png' %}" alt="Background Pattern" />
         <div class="content">
             <div class="logo teacher-complete-account">
-                <img src="images/logo.png" alt="NeurAcademy Logo">
+                <img src="{% static 'images/logo.png' %}" alt="NeurAcademy Logo">
             </div>
             <h2 class="main-header">Complete Your Account</h2>
             <div class="form-box">
@@ -41,7 +42,7 @@
                 </form>
             </div>
             <div class="form-footer">
-                <p class="primary">Not your account? <a class="primary" href="sign_in.html">Log Out</a></p>
+                <p class="primary">Not your account? <a class="primary" href="{% url 'sign_in' %}">Log Out</a></p>
             </div>
         </div>
     </div>

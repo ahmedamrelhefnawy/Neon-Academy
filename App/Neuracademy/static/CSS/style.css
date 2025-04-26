@@ -1,0 +1,414 @@
+/* General Style */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    /* Colors */
+    --background: #f9f9f9;
+    --light-primary: #2395F8;
+    --light-secondary: #F5F7FA;
+    --button-background: #FFFFFF;
+    --button-primary: #FFFFFF;
+    --button-secondary: #34435E;
+    --semi-solid-button: #FFFFFF;
+    --text-primary: #3A3A3A;
+    --text-secondary: #B6B6B6;
+}
+
+body {
+    background-color: var(--background);
+    min-height: 100vh;
+}
+
+.main-header {
+    font-size: 32px;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div.container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+}
+
+div.container > div.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+div.container > img.background-right,
+div.container > img.background-left {
+    position: absolute;
+    z-index: -1;
+    height: auto;
+    max-width: 120%;
+    opacity: 1;
+}
+
+div.container > img.background-right {
+    top: -50px;
+    left: -456px;
+    transform: rotate(-16.25deg) scale(0.82);
+}
+
+div.container > img.background-left {
+    top: -48px;
+    right: -454px;
+    transform: rotate(16.25deg) scale(0.82);
+}
+
+div.container > div.content > div.logo {
+    margin-top: 20px;
+}
+
+div.container > div.content > div.logo > img {
+    height: 40px;
+}
+
+div.primary-form {
+    background: var(--light-secondary);
+    padding: 15px 27px;
+    border: 1px solid var(--text-primary);
+    border-radius: 12px;
+    width: fit-content;
+}
+
+div.select-wrapper {
+    position: relative;
+}
+
+div.select-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    width: 16px;
+    height: 16px;
+    background-image: url('../images/down-arrow.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+div.file-upload {
+    position: relative;
+}
+
+div.file-upload::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    width: 16px;
+    height: 16px;
+    background-image: url('../images/up-arrow.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: translateY(-50%);
+    pointer-events: none;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+}
+
+select.input-primary {
+    appearance: none;
+    cursor: pointer;
+}
+
+input.input-primary,
+select.input-primary {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid var(--text-primary);
+    border-radius: 6px;
+    font-size: 16px;
+    background-color: var(--button-primary);
+    color: var(--text-secondary);
+    font-weight: 100;
+}
+
+select.input-primary > option {
+    color: var(--text-primary);
+}
+
+input.input-primary::placeholder,
+select.input-primary::placeholder {
+    color: var(--text-secondary);
+    font-weight: lighter;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+button.primary {
+    background-color: var(--light-primary);
+    color: var(--button-primary);
+    width: fit-content;
+    padding: 3px;
+    border: 2px solid transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    -webkit-transition: background-color 0.3s ease, color 0.3s ease;
+    -moz-transition: background-color 0.3s ease, color 0.3s ease;
+    -ms-transition: background-color 0.3s ease, color 0.3s ease;
+    -o-transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+button.primary:hover {
+    background-color: white;
+    color: var(--light-primary);
+    border: 2px solid var(--light-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    -webkit-transition: background-color 0.3s ease, color 0.3s ease;
+    -moz-transition: background-color 0.3s ease, color 0.3s ease;
+    -ms-transition: background-color 0.3s ease, color 0.3s ease;
+    -o-transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+a.primary {
+    color: var(--light-primary);
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+a.secondary {
+    color: var(--button-primary);
+    text-decoration: none;
+    background-color: var(--button-secondary);
+    padding: 10px 15px;
+    border: 2px solid transparent;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    font-weight: 500;
+    transition: border 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    -webkit-transition: border 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    -moz-transition: border 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    -ms-transition: border 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    -o-transition: border 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+a.secondary:hover {
+    color: var(--light-primary);
+    background-color: var(--button-background);
+    border: 2px solid var(--light-primary);
+    transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+    -webkit-transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+    -moz-transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+    -ms-transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+    -o-transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+}
+
+a.tertiary {
+    text-decoration: underline;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+label.primary {
+    font-weight: lighter;
+    color: var(--text-primary);
+}
+
+label.upload-btn {
+    display: inline-block;
+    padding: 10px 10px;
+    background-color: var(--button-primary);
+    border: 1px dashed var(--text-primary);
+    border-radius: 6px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    -webkit-transition: background-color 0.3s ease, color 0.3s ease;
+    -moz-transition: background-color 0.3s ease, color 0.3s ease;
+    -ms-transition: background-color 0.3s ease, color 0.3s ease;
+    -o-transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+label.upload-btn:hover {
+    background-color: var(--light-primary);
+    color: var(--button-background);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    -webkit-transition: background-color 0.3s ease, color 0.3s ease;
+    -moz-transition: background-color 0.3s ease, color 0.3s ease;
+    -ms-transition: background-color 0.3s ease, color 0.3s ease;
+    -o-transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+div.form-box {
+    background: var(--light-secondary);
+    padding: 20px;
+    border: 1px solid var(--text-primary);
+    border-radius: 10px;
+}
+
+/* Sign In Page */
+div.container > div.content > div.login > h2.login-header {
+    margin-top: 60px;
+}
+
+div.container > div.content > div.login > div.form-box {
+    margin-top: 25px;
+    width: 380px;
+}
+
+div.container > div.content > div.login > div.form-box > form {
+    display: flex;
+    flex-direction: column;
+}
+
+div.container > div.content > div.login > div.form-box > form > input[type="email"] {
+    margin-bottom: 8px;
+}
+
+div.container > div.content > div.login > div.form-box > form > input[type="password"] {
+    margin-bottom: 15px;
+}
+
+div.container > div.content > div.login > div.form-box > form > div.options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+div.container > div.content > div.login > div.form-box > form > div.options > div.remember-me > label {
+    font-size: 15px;
+}
+
+div.container > div.content > div.login > div.form-box > form > button {
+    margin: auto;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 18px;
+    width: 80%;
+}
+
+div.container > div.content > div.login > p.signup-text {
+    text-align: center;
+    font-size: 13px;
+    margin-top: 22px;
+}
+
+
+/* Teacher Sign Up */
+div.container > div.content > div.signup-form > form#teacherSignupForm > div.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 10px;
+}
+
+div.container > div.content > div.signup-form > form#teacherSignupForm > div.form-row > div.form-group-horizontal > div.date-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px;
+}
+
+div.container > div.content > div.signup-form > form#teacherSignupForm > div.form-row > div.form-group-horizontal > div.password-requirements {
+    margin-top: 10px;
+    margin-left: 7px;
+    font-size: 0.875rem;
+}
+
+div.container > div.content > div.signup-form > form#teacherSignupForm > div.form-row > div.form-group-vertical {
+    display: flex;
+    flex-direction: column;
+}
+
+div.container > div.content > div.signup-form > form#teacherSignupForm > div.form-row > div.form-group-vertical > div.form-group-horizontal {
+    margin-bottom: 10px;
+}
+
+div.container > div.content > div.signup-form > form#teacherSignupForm > div.form-row > div.form-group-horizontal-vertical > div.form-group-horizontal > div.file-upload > input[type="file"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+
+div.container > div.content > div.signup-form > form#teacherSignupForm > div.submit {
+    text-align: center;
+}
+
+div.container > div.content > div.signup-form > form#teacherSignupForm > div.submit > button.submit-btn {
+    font-size: 16px;
+    margin-top: 10px;
+    width: 30%;
+}
+
+div.container > div.content > div.form-footer {
+    color: var(--text-primary);
+    margin-top: 5px;
+    text-align: center;
+    font-size: 0.875rem;
+}
+
+div.container > div.content > div.form-footer > p {
+    margin-bottom: 15px;
+}
+
+div.container > div.content > div.form-footer > p > a.secondary {
+    font-size: 20px;
+}
+
+
+/* Teacher Complete Account */
+div.container > div.content > div.logo.teacher-complete-account {
+    margin-bottom: 50px;
+}
+
+div.container > div.content > div.form-box {
+    width: 100%;
+}
+
+div.container > div.content > div.form-box > form > label.primary {
+    font-size: 16px;
+}
+
+div.container > div.content > div.form-box > form > div.authentication-requirements {
+    margin-top: 10px;
+    color: var(--text-primary);
+    font-weight: 100;
+    font-size: 12px;
+    margin-bottom: 100px;
+    padding-left: 10px;
+}
+
+div.container > div.content > div.form-box > form > button {
+    width: 30%;
+    font-size: 16px;
+    display: block;
+    margin: 0 auto;
+}

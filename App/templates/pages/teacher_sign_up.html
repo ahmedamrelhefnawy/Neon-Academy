@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,18 +12,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-    <link rel="icon" href="images/icon.png" />
+    <link rel="icon" href="{% static 'images/icon.png' %}" />
 
-    <link rel="stylesheet" href="temp.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
     <div class="container center">
-        <img class="background-right" src="images/Background-Educational-Pattern.png" alt="Background Pattern" />
-        <img class="background-left" src="images/Background-Educational-Pattern.png" alt="Background Pattern" />
+        <img class="background-right" src="{% static 'images/Background-Educational-Pattern.png' %}" alt="Background Pattern" />
+        <img class="background-left" src="{% static 'images/Background-Educational-Pattern.png' %}" alt="Background Pattern" />
         <div class="content">
             <div class="logo">
-                <img src="images/logo.png" alt="NeurAcademy Logo">
+                <img src="{% static 'images/logo.png' %}" alt="NeurAcademy Logo">
             </div>
             <h2 class="main-header">Create Teacher Account</h2>
             <div class="signup-form form-box">
@@ -124,7 +125,7 @@
             </div>
 
             <div class="form-footer">
-                <p>Already have an account? <a href="sign_in.html" class="sign-in-link primary">Sign In</a></p>
+                <p>Already have an account? <a href="{% url 'sign_in' %}" class="sign-in-link primary">Sign In</a></p>
                 <p>Are you a Student? <a href="#" class="secondary">Create Student Account</a></p>
             </div>
         </div>
