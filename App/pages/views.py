@@ -7,5 +7,8 @@ def sign_in(request):
 def teacher_sign_up(request):
     return render(request, 'pages/teacher_sign_up.html')
 
+def student_sign_up(request):
+    return render(request, 'pages/student_sign_up.html')
+
 def teacher_complete_account(request):
     return render(request, 'pages/teacher_complete_account.html')

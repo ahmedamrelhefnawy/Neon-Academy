@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Teacher Sign Up</title>
+    <title>Student Sign Up</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -129,7 +129,7 @@
 
             <div class="form-footer">
                 <p>Already have an account? <a href="{% url 'sign_in' %}" class="sign-in-link primary">Sign In</a></p>
-                <p>Are you a Teacher? <a href="#" class="secondary">Create Teacher Account</a></p>
+                <p>Are you a Teacher? <a href="{% url 'teacher_sign_up' %}" class="secondary">Create Teacher Account</a></p>
             </div>
         </div>
     </div>
