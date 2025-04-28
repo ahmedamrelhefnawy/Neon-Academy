@@ -1,0 +1,47 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Sign Up</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <link rel="icon" href="{% static 'images/icon.png' %}" />
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <div class="container center">
+        <img class="background-right" src="{% static 'images/Background-Educational-Pattern.png' %}" alt="Background Pattern" />
+        <img class="background-left" src="{% static 'images/Background-Educational-Pattern.png' %}" alt="Background Pattern" />
+        <div class="content">
+            <div class="logo teacher-complete-account">
+                <img src="{% static 'images/logo.png' %}" alt="NeurAcademy Logo">
+            </div>
+            <h2 class="main-header">Complete Your Account</h2>
+            <div class="form-box">
+                <form>
+                    <label for="authentication" class="primary">Profile Picture (Optional)</label>
+                    <div class="file-upload">
+                        <input type="file" id="profilePicture" name="profilePicture" accept="image/*">
+                        <label class="primary upload-btn" for="profilePicture">Upload file</label>
+                    </div>
+                    <div class="authentication-requirements">
+                        <p>• Formats available: JPEG, PNG</p>
+                    </div>
+                    <button class="primary" type="submit">Proceed</button>
+                </form>
+            </div>
+            <div class="form-footer">
+                <p class="primary">Not your account? <a class="primary" href="{% url 'sign_in' %}">Log Out</a></p>
+            </div>
+        </div>
+    </div>
+</body>

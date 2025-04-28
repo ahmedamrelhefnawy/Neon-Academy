@@ -12,3 +12,6 @@ def student_sign_up(request):
 
 def teacher_complete_account(request):
     return render(request, 'pages/teacher_complete_account.html')
+
+def student_complete_account(request):
+    return render(request, 'pages/student_complete_account.html')
