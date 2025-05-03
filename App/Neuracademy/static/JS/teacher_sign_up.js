@@ -216,9 +216,9 @@ function checkFileName() {
 }
 // Profile Picture File Name Viewer & Checker End
 
-// Form Validation
-const form = document.querySelector("form");
-const submitButton = document.querySelector(".submit-btn");
+// Teacher Sign Up Form Validation
+const form = document.querySelector("form#teacherSignupForm");
+const submitButton = document.querySelector(".teacher-sign-up-submit-btn");
 const firstNameLabel = document.querySelector(".first-name-label");
 const lastNameLabel = document.querySelector(".last-name-label");
 const emailLabel = document.querySelector(".email-label");
@@ -227,7 +227,7 @@ const profilePictureLabel = document.querySelector(".profile-picture-label");
 const passwordLabel = document.querySelector(".password-label");
 const passwordConfirmationLabel = document.querySelector(".password-confirmation-label");
 
-function validateForm(event) {
+function validateTeacherSignUpForm(event) {
     event.preventDefault();
 
     const isEmailValid = isValidEmail();
@@ -285,5 +285,5 @@ function validateForm(event) {
     }
 }
 
-submitButton.addEventListener("click", validateForm);
-// Form Validation End
+submitButton.addEventListener("click", validateTeacherSignUpForm);
+// Teacher Sign Up Form Validation End

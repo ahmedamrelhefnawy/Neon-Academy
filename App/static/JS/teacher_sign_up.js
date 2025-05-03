@@ -99,10 +99,10 @@ const lastNameRegex = /^[a-zA-Z]+$/;
 function isValidLastName() {
     let lastName = lastNameInput.value;
     if(lastNameRegex.test(lastName)) {
-        console.log("Valid Last Name");
+        return true;
     }
     else {
-        console.log("Invalid Last Name");
+        return false;
     }
 }
 
@@ -182,7 +182,7 @@ const passwordConfirmationInput = document.querySelector(".password-confirmation
 function passwordConfirmationChecker() {
     let password = passwordInput.value,
         passwordConfirmation = passwordConfirmationInput.value;
-    if(password === passwordConfirmation) {
+    if(password === passwordConfirmation && passwordConfirmation !== "") {
         return true;
     }
     else {
@@ -191,7 +191,7 @@ function passwordConfirmationChecker() {
 }
 // Password Confirmation Checker End
 
-// Profile Picture File Name Viewer
+// Profile Picture File Name Viewer & Checker
 const profilePictureInput = document.getElementById("profilePicture");
 const customTextLabel = document.getElementById("custom-text");
 
@@ -202,46 +202,88 @@ profilePictureInput.addEventListener("change", function() {
         customTextLabel.innerHTML = "Upload File";
     }
 });
-// Profile Picture File Name Viewer End
 
-// Form Validation
-// const form = document.querySelector("form");
-// const submitButton = document.querySelector(".submit-button");
-// const errorMessage = document.querySelector(".error-message");
-// const successMessage = document.querySelector(".success-message");
+function checkFileName() {
+    const fileName = profilePictureInput.value.split("\\").pop();
+    const fileExtension = fileName.split(".").pop().toLowerCase();
+    const allowedExtensions = ["jpg", "jpeg", "png"];
 
-// function validateForm(event) {
-//     event.preventDefault();
+    if (allowedExtensions.includes(fileExtension) && fileName !== "Upload File") {
+        return true;
+    } else {
+        return false;
+    }
+}
+// Profile Picture File Name Viewer & Checker End
 
-//     const isEmailValid = isValidEmail();
-//     const isFirstNameValid = isValidFirstName();
-//     const isLastNameValid = isValidLastName();
-//     const isPhoneNumberValid = isValidPhoneNumber();
-//     const isPasswordValid = passwordChecker();
-//     const isPasswordConfirmationValid = passwordConfirmationChecker();
+// Teacher Sign Up Form Validation
+const form = document.querySelector("form#teacherSignupForm");
+const submitButton = document.querySelector(".teacher-sign-up-submit-btn");
+const firstNameLabel = document.querySelector(".first-name-label");
+const lastNameLabel = document.querySelector(".last-name-label");
+const emailLabel = document.querySelector(".email-label");
+const phoneLabel = document.querySelector(".phone-label");
+const profilePictureLabel = document.querySelector(".profile-picture-label");
+const passwordLabel = document.querySelector(".password-label");
+const passwordConfirmationLabel = document.querySelector(".password-confirmation-label");
 
-//     if (!isEmailValid) {
-//         alert("Please enter a valid email address.");
-//     }
-//     if (!isFirstNameValid) {
-//         alert("Please enter a valid first name.");
-//     }
-//     if (!isLastNameValid) {
-//         alert("Please enter a valid last name.");
-//     }
-//     if (!isPhoneNumberValid) {
-//         alert("Please enter a valid phone number.");
-//     }
-//     if (!isPasswordValid) {
-//         alert("Please enter a valid password.");
-//     }
-//     if (!isPasswordConfirmationValid) {
-//         alert("Password confirmation does not match.");
-//     }
-//     if (isEmailValid && isFirstNameValid && isLastNameValid && isPhoneNumberValid && isPasswordValid && isPasswordConfirmationValid) {
-//         form.submit();
-//     }
-// }
+function validateTeacherSignUpForm(event) {
+    event.preventDefault();
 
-// submitButton.addEventListener("click", validateForm);
-// Form Validation End
+    const isEmailValid = isValidEmail();
+    const isFirstNameValid = isValidFirstName();
+    const isLastNameValid = isValidLastName();
+    const isPhoneNumberValid = isValidPhoneNumber();
+    const isPasswordValid = passwordChecker();
+    const isPasswordConfirmationValid = passwordConfirmationChecker();
+    const isFileNameValid = checkFileName();
+
+    if (!isEmailValid) {
+        emailLabel.classList.add("error");
+    }
+    else {
+        emailLabel.classList.remove("error");
+    }
+    if (!isFirstNameValid) {
+        firstNameLabel.classList.add("error");
+    }
+    else {
+        firstNameLabel.classList.remove("error");
+    }
+    if (!isLastNameValid) {
+        lastNameLabel.classList.add("error");
+    }
+    else {
+        lastNameLabel.classList.remove("error");
+    }
+    if (!isPhoneNumberValid) {
+        phoneLabel.classList.add("error");
+    }  
+    else {
+        phoneLabel.classList.remove("error");
+    }
+    if (!isFileNameValid) {
+        profilePictureLabel.classList.add("error");
+    }  
+    else {
+        profilePictureLabel.classList.remove("error");
+    }
+    if (!isPasswordValid) {
+        passwordLabel.classList.add("error");
+    }  
+    else {
+        passwordLabel.classList.remove("error");
+    }
+    if (!isPasswordConfirmationValid) {
+        passwordConfirmationLabel.classList.add("error");
+    }  
+    else {
+        passwordConfirmationLabel.classList.remove("error");
+    }
+    if (isEmailValid && isFirstNameValid && isLastNameValid && isPhoneNumberValid && isPasswordValid && isPasswordConfirmationValid && isFileNameValid) {
+        form.submit();
+    }
+}
+
+submitButton.addEventListener("click", validateTeacherSignUpForm);
+// Teacher Sign Up Form Validation End

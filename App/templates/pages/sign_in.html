@@ -29,11 +29,11 @@
                 <div class="login">
                     <h2 class="main-header login-header">Sign In</h2>
                     <div class="form-box">
-                        <form>
-                            <label class="primary" for="email">Email</label>
-                            <input class="input-primary" type="email" id="email" placeholder="Enter your email" />
-                            <label class="primary" for="password">Password</label>
-                            <input class="input-primary" type="password" id="password" placeholder="Enter your Password" />
+                        <form id="signInForm">
+                            <label class="primary email-label" for="email">Email</label>
+                            <input class="input-primary email" type="email" id="email" placeholder="Enter your email" />
+                            <label class="primary password-label" for="password">Password</label>
+                            <input class="input-primary password" type="password" id="password" placeholder="Enter your Password" />
                             <div class="options">
                                 <div class="remember-me">
                                     <input type="checkbox" id="remember-me"/>
@@ -43,7 +43,7 @@
                                 </div>
                                 <a class="tertiary" href="#">Forgot your password?</a>
                             </div>
-                            <button class="primary" type="submit">Sign in</button>
+                            <button class="primary sign-in-submit-btn" type="submit">Sign in</button>
                         </form>
                     </div>
                     <p class="signup-text">
@@ -53,5 +53,6 @@
                 </div>
             </div>
         </div>
+        <script src="{% static 'js/sign_in.js' %}"></script>
     </body>
 </html>
