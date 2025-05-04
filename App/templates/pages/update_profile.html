@@ -1,0 +1,99 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Update Profile</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <link rel="icon" href="{% static 'images/icon.png' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-logo">
+            <img src="{% static 'images/logo.png' %}" alt="Neuracademy Logo">
+        </div>
+        <div class="nav-links">
+            <a href="#">My Courses</a>
+            <a href="#">Log out</a>
+        </div>
+    </nav>
+    
+    <div class="container profile">
+        <div class="content profile">
+            <h2 class="main-header profile">My Profile</h2>
+            <div class="profile-container">
+                <form id="updateProfileForm">
+                    <div class="profile-layout">
+                        <!-- Left Column: Profile Photo, First Name, Last Name, Date of Birth -->
+                        <div class="profile-left-column">
+                            <div class="profile-photo-container">
+                                <!-- Profile picture placeholder -->
+                                <div class="profile-photo-placeholder"></div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="primary" for="firstName">First Name</label>
+                                <input class="input-primary" type="text" id="firstName" name="firstName" placeholder="Mostafa" value="{{ first_name }}" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="primary" for="lastName">Last Name</label>
+                                <input class="input-primary" type="text" id="lastName" name="lastName" placeholder="Elmenshawy" value="{{ last_name }}" required>
+                            </div>
+                            
+                            <div class="form-group date-of-birth">
+                                <label class="primary">Date of Birth</label>
+                                <div class="date-inputs">
+                                    <input class="input-primary date-input" type="text" id="day" name="day" placeholder="11" maxlength="2">
+                                    <input class="input-primary date-input" type="text" id="month" name="month" placeholder="4" maxlength="2">
+                                    <input class="input-primary date-input year" type="text" id="year" name="year" placeholder="2003" maxlength="4">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Right Column: Email, Phone, Passwords -->
+                        <div class="profile-right-column">
+                            <div class="form-group">
+                                <label class="primary" for="email">Email</label>
+                                <input class="input-primary" type="email" id="email" name="email" placeholder="mostafaelmenshawy@gmail.com" value="{{ email }}" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="primary" for="phoneNumber">Phone Number</label>
+                                <input class="input-primary" type="tel" id="phoneNumber" name="phoneNumber" placeholder="+20123456789" value="{{ phone }}" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="primary" for="password">Password</label>
+                                <input class="input-primary" type="password" id="password" name="password" placeholder="Enter a strong password">
+                                <div class="password-requirements">
+                                    <p>• Use both lowercase and uppercase letters</p>
+                                    <p>• Use special characters e.g #, (, ...</p>
+                                    <p>• Use numbers</p>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="primary" for="confirmPassword">Confirm Password</label>
+                                <input class="input-primary" type="password" id="confirmPassword" name="confirmPassword" placeholder="Enter a strong password">
+                            </div>
+                            
+                            <div class="submit">
+                                <button type="submit" class="submit-btn primary">Update My Profile</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

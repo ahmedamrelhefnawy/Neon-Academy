@@ -15,3 +15,6 @@ def teacher_complete_account(request):
 
 def student_complete_account(request):
     return render(request, 'pages/student_complete_account.html')
+
+def update_profile(request):
+    return render(request, 'pages/update_profile.html')

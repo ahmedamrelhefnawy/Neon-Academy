@@ -412,3 +412,137 @@ div.container > div.content > div.form-box > form > button {
     display: block;
     margin: 0 auto;
 }
+
+/* Update Profile Page */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: #1490E4;
+    padding: 12px 30px;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.nav-logo img {
+    height: 40px;
+    filter: brightness(0) invert(1); /* Makes logo white */
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.container.profile {
+    width: 100%;
+    padding-top: 80px; /* Space for fixed nav */
+    display: block;
+}
+
+.content.profile {
+    max-width: 950px;
+    margin: 0 auto;
+    padding: 20px;
+    display: block;
+}
+
+.main-header.profile {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+    text-align: left;
+}
+
+.profile-container {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 40px;
+    margin-top: 20px;
+}
+
+.profile-layout {
+    display: flex;
+    gap: 50px;
+}
+
+.profile-left-column {
+    flex: 0 0 40%;
+    padding-right: 20px;
+}
+
+.profile-right-column {
+    flex: 0 0 50%;
+    padding-left: 30px;
+    border-left: 1px solid #eee;
+}
+
+.profile-photo-container {
+    width: 100%;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.profile-photo-placeholder {
+    width: 180px;
+    height: 180px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.date-inputs {
+    display: flex;
+    gap: 10px;
+}
+
+.date-input {
+    width: 60px;
+    text-align: center;
+}
+
+.date-input.year {
+    width: 90px;
+}
+
+.password-requirements {
+    margin-top: 8px;
+    font-size: 12px;
+    color: #666;
+}
+
+.submit {
+    margin-top: 30px;
+}
+
+.submit-btn.primary {
+    background-color: #1490E4;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-btn.primary:hover {
+    background-color: #0e7bc0;
+}
