@@ -11,6 +11,7 @@
     --background: #f9f9f9;
     --light-primary: #2395F8;
     --light-secondary: #F5F7FA;
+    --light-tertiary: #969ae7;
     --button-background: #FFFFFF;
     --button-primary: #FFFFFF;
     --button-secondary: #34435E;
@@ -36,6 +37,22 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.hollow-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1px solid var(--text-primary);
+    display: inline-block;
+}
+
+.solid-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--light-tertiary);
+    display: inline-block;
 }
 
 div.container {
@@ -158,10 +175,6 @@ input.input-primary::placeholder,
 select.input-primary::placeholder {
     color: var(--text-secondary);
     font-weight: lighter;
-}
-
-input[type="file"] {
-    display: none;
 }
 
 button.primary {
@@ -351,12 +364,12 @@ div.container > div.content > div.signup-form > form#teacherSignupForm > div.for
     margin-bottom: 10px;
 }
 
-div.container > div.content > div.signup-form > form#teacherSignupForm > div.form-row > div.form-group-horizontal-vertical > div.form-group-horizontal > div.file-upload > input[type="file"] {
+/* div.container > div.content > div.signup-form > form#teacherSignupForm > div.form-row > div.form-group-horizontal-vertical > div.form-group-horizontal > div.file-upload > input[type="file"] {
     position: absolute;
     width: 0;
     height: 0;
     opacity: 0;
-}
+} */
 
 div.container > div.content > div.signup-form > form#teacherSignupForm > div.submit {
     text-align: center;

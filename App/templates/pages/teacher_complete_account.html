@@ -27,18 +27,20 @@
             </div>
             <h2 class="main-header">Complete Your Account</h2>
             <div class="form-box">
-                <form>
-                    <label for="authentication" class="primary">Authentication (ID Card or Passport)</label>
+                <form id="teacherCompleteAccount">
+                    <label for="authentication" class="primary authentication-file-label">Authentication (ID Card or Passport)</label>
                     <div class="file-upload">
-                        <input type="file" id="authentication" name="authentication" accept=".pdf,.doc,.docx" required>
-                        <label class="primary upload-btn" for="authentication">Upload file</label>
+                        <input type="file" id="AuthenticationFile" hidden name="AuthenticationFile" accept=".pdf, .doc, .docx" required/>
+                        <label id="custom-text" class="primary upload-btn" for="AuthenticationFile">
+                            Upload File
+                        </label>
                     </div>
                     <div class="authentication-requirements">
                         <p>• ID Card: Front and back face pictures.</p>
                         <p>• Passport: The Main page</p>
                         <p>• Allowed formats: PDF, Word Document</p>
                     </div>
-                    <button class="primary" type="submit">Proceed</button>
+                    <button class="primary teacher-complete-account-submit-btn" type="submit">Proceed</button>
                 </form>
             </div>
             <div class="form-footer">
@@ -46,4 +48,5 @@
             </div>
         </div>
     </div>
+    <script src="{% static 'js/teacher_complete_account.js' %}"></script>
 </body>

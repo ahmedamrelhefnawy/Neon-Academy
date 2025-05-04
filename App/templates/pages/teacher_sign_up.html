@@ -29,45 +29,46 @@
                 <form id="teacherSignupForm">
                     <div class="form-row">
                         <div class="form-group-horizontal">
-                            <label class="primary" for="firstName">First Name</label>
-                            <input class="input-primary" type="text" id="firstName" name="firstName" placeholder="Enter your first name" required>
+                            <label class="primary first-name-label" for="firstName">First Name</label>
+                            <input class="input-primary first-name" type="text" id="firstName" name="firstName" placeholder="Enter your first name" required>
                         </div>
                         <div class="form-group-horizontal">
-                            <label class="primary" for="lastName">Last Name</label>
-                            <input class="input-primary" type="text" id="lastName" name="lastName" placeholder="Enter your last name" required>
+                            <label class="primary last-name-label" for="lastName">Last Name</label>
+                            <input class="input-primary last-name" type="text" id="lastName" name="lastName" placeholder="Enter your last name" required>
                         </div>
                     </div>
     
                     <div class="form-row">
                         <div class="form-group-horizontal">
-                            <label class="primary" for="email">Email</label>
-                            <input class="input-primary" type="email" id="email" name="email" placeholder="Enter your email" required>
+                            <label class="primary email-label" for="email">Email</label>
+                            <input class="input-primary email" type="email" id="email" name="email" placeholder="Enter your email" required>
                         </div>
                         <div class="form-group-horizontal">
                             <label class="primary">Date of Birth</label>
                             <div class="date-inputs">
                                 <div class="select-wrapper">
-                                    <select class="primary input-primary" id="day" name="day" required>
-                                        <option value="" disabled selected>Day</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                    </select>
+                                    <select class="primary input-primary" id="day" name="day" required></select>
                                 </div>
                                 
                                 <div class="select-wrapper">
                                     <select class="primary input-primary" id="month" name="month" required>
-                                        <option value="" disabled selected>Month</option>
                                         <option value="1">January</option>
                                         <option value="2">February</option>
+                                        <option value="3">March</option>
+                                        <option value="4">April</option>
+                                        <option value="5">May</option>
+                                        <option value="6">June</option>
+                                        <option value="7">July</option>
+                                        <option value="8">August</option>
+                                        <option value="9">September</option>
+                                        <option value="10">October</option>
+                                        <option value="11">November</option>
+                                        <option value="12">December</option>
                                     </select>
                                 </div>
                                 
                                 <div class="select-wrapper">
-                                    <select class="primary input-primary" id="year" name="year" required>
-                                        <option value="" disabled selected>Year</option>
-                                        <option value="2000">2000</option>
-                                        <option value="2001">2001</option>
-                                    </select>
+                                    <select class="primary input-primary" id="year" name="year" required></select>
                                 </div>
                             </div>
                         </div>                        
@@ -75,21 +76,23 @@
 
                     <div class="form-row">
                         <div class="form-group-horizontal">
-                            <label class="primary" for="password">Password</label>
-                            <input class="input-primary" type="password" id="password" name="password" placeholder="Enter a strong password" required>
+                            <label class="primary password-label" for="password">Password</label>
+                            <input class="input-primary password" type="password" id="password" name="password" placeholder="Enter a strong password" required>
                             <div class="password-requirements">
-                                <p>• Use both lowercase and uppercase letters</p>
-                                <p>• Use special characters e.g #, (, ...</p>
-                                <p>• Use numbers</p>
+                                <p><span class="hollow-dot"></span> Use both lowercase and uppercase letters</p>
+                                <p><span class="hollow-dot"></span> Use special characters e.g #, (, ...</p>
+                                <p><span class="hollow-dot"></span> Use numbers</p>
                             </div>
                         </div>
                         
                         <div class="form-group-vertical">
                             <div class="form-group-horizontal">
-                                <label class="primary" for="profilePicture">Profile Picture</label>
+                                <label class="primary profile-picture-label" for="profilePicture">Profile Picture</label>
                                 <div class="file-upload">
-                                    <input type="file" id="profilePicture" name="profilePicture" accept="image/*">
-                                    <label class="primary upload-btn" for="profilePicture">Upload file</label>
+                                    <input type="file" id="profilePicture" hidden name="profilePicture" accept="image/*" required/>
+                                    <label id="custom-text" class="primary upload-btn" for="profilePicture">
+                                        Upload File
+                                    </label>
                                 </div>
                             </div>
             
@@ -97,8 +100,7 @@
                                 <label class="primary" for="gender">Gender</label>
                                 <div class="select-wrapper">
                                     <select class="input-primary" id="gender" name="gender" required>
-                                        <option value="" disabled selected>Choose an option</option>
-                                        <option value="male">Male</option>
+                                        <option value="male" selected>Male</option>
                                         <option value="female">Female</option>
                                     </select>
                                 </div>
@@ -108,18 +110,18 @@
     
                     <div class="form-row">
                         <div class="form-group-horizontal">
-                            <label class="primary" for="confirmPassword">Confirm Password</label>
-                            <input class="input-primary" type="password" id="confirmPassword" name="confirmPassword" placeholder="Enter a strong password" required>
+                            <label class="primary password-confirmation-label" for="confirmPassword">Confirm Password</label>
+                            <input class="input-primary password-confirmation" type="password" id="confirmPassword" name="confirmPassword" placeholder="Enter a strong password" required>
                         </div>
 
                         <div class="form-group-horizontal">
-                            <label class="primary" for="phoneNumber">Phone Number</label>
-                            <input class="input-primary" type="tel" id="phoneNumber" name="phoneNumber" placeholder="Enter your phone number" required>
+                            <label class="primary phone-label" for="phoneNumber">Phone Number</label>
+                            <input class="input-primary phone-number" type="tel" id="phoneNumber" name="phoneNumber" placeholder="e.g. 01XXXXXXXXX" required>
                         </div>
                     </div>
                     
                     <div class="submit">
-                        <button type="submit" class="submit-btn primary">Sign Up as a Teacher</button>
+                        <button type="submit" class="submit-btn primary teacher-sign-up-submit-btn">Sign Up as a Teacher</button>
                     </div>
                 </form>
             </div>
@@ -130,5 +132,6 @@
             </div>
         </div>
     </div>
+    <script src="{% static 'js/teacher_sign_up.js' %}"></script>
 </body>
 </html> 
