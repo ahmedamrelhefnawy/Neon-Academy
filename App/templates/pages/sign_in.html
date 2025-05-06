@@ -29,11 +29,12 @@
                 <div class="login">
                     <h2 class="main-header login-header">Sign In</h2>
                     <div class="form-box">
-                        <form id="signInForm">
+                        <form id="signInForm" method="POST">
+                            {% csrf_token %}
                             <label class="primary email-label" for="email">Email</label>
-                            <input class="input-primary email" type="email" id="email" placeholder="Enter your email" />
+                            <input class="input-primary email" name="email" type="email" id="email" placeholder="Enter your email" />
                             <label class="primary password-label" for="password">Password</label>
-                            <input class="input-primary password" type="password" id="password" placeholder="Enter your Password" />
+                            <input class="input-primary password" name="password" type="password" id="password" placeholder="Enter your Password" />
                             <div class="options">
                                 <div class="remember-me">
                                     <input type="checkbox" id="remember-me"/>

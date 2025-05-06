@@ -427,6 +427,10 @@ div.container > div.content > div.form-box > form > div.authentication-requireme
     padding-left: 10px;
 }
 
+div.container > div.content > div.form-box > form#teacherCompleteAccount > div.center > button {
+    font-size: 18px;
+}
+
 /* Forgot Password */
 div.container > div.content > div.form-box > form#forgotPasswordForm > div.center button.forgot-password-submit-btn {
     font-size: 18px;
