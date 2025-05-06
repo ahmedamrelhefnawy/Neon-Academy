@@ -15,3 +15,6 @@ def teacher_complete_account(request):
 
 def student_complete_account(request):
     return render(request, 'pages/student_complete_account.html')
+
+def forgot_password(request):
+    return render(request, 'pages/forgot_password.html')

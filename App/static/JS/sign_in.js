@@ -1,7 +1,7 @@
 // email checker
 const emailInput = document.querySelector(".email");
 
-function isValidEmail() {
+function emailChecker() {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     let email = emailInput.value;
     if(emailRegex.test(email)) {
@@ -12,7 +12,7 @@ function isValidEmail() {
     }
 }
 
-emailInput.addEventListener("input", isValidEmail);
+emailInput.addEventListener("input", emailChecker);
 // email checker end
 
 // Password Checker

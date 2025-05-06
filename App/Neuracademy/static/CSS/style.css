@@ -182,6 +182,7 @@ button.primary {
     background-color: var(--light-primary);
     color: var(--button-primary);
     width: fit-content;
+    margin-top: 20px;
     padding: 3px;
     border: 2px solid transparent;
     border-radius: 6px;
@@ -395,7 +396,8 @@ div.container > div.content > div.form-footer {
 }
 
 div.container > div.content > div.form-footer > p {
-    margin-bottom: 15px;
+    margin-top: 4px;
+    margin-bottom: 12px;
 }
 
 div.container > div.content > div.form-footer > p > a.secondary {
@@ -425,9 +427,7 @@ div.container > div.content > div.form-box > form > div.authentication-requireme
     padding-left: 10px;
 }
 
-div.container > div.content > div.form-box > form > button {
-    width: 30%;
-    font-size: 16px;
-    display: block;
-    margin: 0 auto;
+/* Forgot Password */
+div.container > div.content > div.form-box > form#forgotPasswordForm > div.center button.forgot-password-submit-btn {
+    font-size: 18px;
 }
