@@ -1,8 +1,8 @@
 // Email Address Checker
-const emailAddress = document.getElementById("emailAddress");
-const emailAddressLabel = document.getElementById("email-address-label");
+const emailInput = document.getElementById("emailAddress");
+const emailAddressLabel = document.querySelector(".email-address-label");
 
-emailAddress.addEventListener("change", isValidEmail);
+emailInput.addEventListener("change", isValidEmail);
 
 function isValidEmail() {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;

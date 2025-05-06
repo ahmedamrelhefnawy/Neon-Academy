@@ -431,3 +431,14 @@ div.container > div.content > div.form-box > form > div.authentication-requireme
 div.container > div.content > div.form-box > form#forgotPasswordForm > div.center button.forgot-password-submit-btn {
     font-size: 18px;
 }
+
+/* Reset Password */
+div.container > div.content > div.form-box > form#resetPasswordForm > div.password-requirements {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+
+div.container > div.content > div.form-box > form#resetPasswordForm > div.center > button.reset-password-submit-btn {
+    font-size: 18px;
+}

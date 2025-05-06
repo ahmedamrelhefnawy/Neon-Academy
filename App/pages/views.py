@@ -18,3 +18,6 @@ def student_complete_account(request):
 
 def forgot_password(request):
     return render(request, 'pages/forgot_password.html')
+
+def reset_password(request):
+    return render(request, 'pages/reset_password.html')

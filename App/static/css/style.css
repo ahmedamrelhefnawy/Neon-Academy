@@ -396,7 +396,8 @@ div.container > div.content > div.form-footer {
 }
 
 div.container > div.content > div.form-footer > p {
-    margin-top: 8px;
+    margin-top: 4px;
+    margin-bottom: 12px;
 }
 
 div.container > div.content > div.form-footer > p > a.secondary {
@@ -427,6 +428,6 @@ div.container > div.content > div.form-box > form > div.authentication-requireme
 }
 
 /* Forgot Password */
-div.container > div.content > div.form-box > form#forgetPasswordAccount > div.center button.forgot-password-submit-btn {
+div.container > div.content > div.form-box > form#forgotPasswordForm > div.center button.forgot-password-submit-btn {
     font-size: 18px;
 }
