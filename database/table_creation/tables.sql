@@ -1,3 +1,7 @@
+create database Neuracademy
+
+use Neuracademy
+
 create table app_user(
 	uid int not null identity(1,1),
 	password varchar(50)not null,
