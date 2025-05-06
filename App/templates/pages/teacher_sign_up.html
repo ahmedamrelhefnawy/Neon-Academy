@@ -26,7 +26,8 @@
             </div>
             <h2 class="main-header">Create Teacher Account</h2>
             <div class="signup-form form-box">
-                <form id="teacherSignupForm">
+                <form id="teacherSignupForm" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
                     <div class="form-row">
                         <div class="form-group-horizontal">
                             <label class="primary first-name-label" for="firstName">First Name</label>

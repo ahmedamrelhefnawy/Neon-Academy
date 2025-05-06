@@ -4,7 +4,7 @@ CREATE PROCEDURE create_teacher_account
     @email VARCHAR(100),
     @dob DATE,
     @password VARCHAR(50),
-    @picture VARCHAR(100),
+    @picture varbinary(MAX),
     @gender VARCHAR(7),
     @phone CHAR(11)
 AS

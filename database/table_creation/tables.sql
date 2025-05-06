@@ -10,7 +10,7 @@ create table app_user(
 	email varchar(100) not null,
 	dob date,
 	gender varchar(7) CHECK (LOWER(gender) IN ('male', 'female')),
-	picture varchar(100),
+	picture varbinary(max),
 	phone varchar(11) unique,
 	primary key (uid)
 	);
@@ -22,7 +22,7 @@ create table student(
 	);
 create table teacher(
 	tid int not null,
-	auth_doc varchar(100),
+	auth_doc varbinary(max),
 	rating decimal(3,1) CHECK (rating BETWEEN 0 AND 10),
 	foreign key (tid) references app_user(uid) ON DELETE CASCADE,
 	primary key (tid)
