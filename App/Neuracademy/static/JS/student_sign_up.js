@@ -236,7 +236,6 @@ function validateStudentSignUpForm(event) {
     const isPhoneNumberValid = isValidPhoneNumber();
     const isPasswordValid = passwordChecker();
     const isPasswordConfirmationValid = passwordConfirmationChecker();
-    const isFileNameValid = checkFileName();
 
     if (!isEmailValid) {
         emailLabel.classList.add("error");
@@ -262,10 +261,7 @@ function validateStudentSignUpForm(event) {
     else {
         phoneLabel.classList.remove("error");
     }
-    if (!isFileNameValid) {
-        profilePictureLabel.classList.add("error");
-    }  
-    if (!isPasswordValid) {
+    if (!isPasswordValid && passwordInput.value == "") {
         passwordLabel.classList.add("error");
     }  
     else {
@@ -277,7 +273,7 @@ function validateStudentSignUpForm(event) {
     else {
         passwordConfirmationLabel.classList.remove("error");
     }
-    if (isEmailValid && isFirstNameValid && isLastNameValid && isPhoneNumberValid && isPasswordValid && isPasswordConfirmationValid && isFileNameValid) {
+    if (isEmailValid && isFirstNameValid && isLastNameValid && isPhoneNumberValid && isPasswordValid && isPasswordConfirmationValid) {
         form.submit();
     }
 }

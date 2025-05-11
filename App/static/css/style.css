@@ -343,46 +343,46 @@ div.container > div.content > div.login > p.signup-text {
 
 
 /* Teacher Sign Up */
-div.container > div.content > div.signup-form > form#teacherSignupForm > div.form-row {
+div.container > div.content > div.signup-form > form > div.form-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 30px;
     margin-bottom: 10px;
 }
 
-div.container > div.content > div.signup-form > form#teacherSignupForm > div.form-row > div.form-group-horizontal > div.date-inputs {
+div.container > div.content > div.signup-form > form > div.form-row > div.form-group-horizontal > div.date-inputs {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 15px;
 }
 
-div.container > div.content > div.signup-form > form#teacherSignupForm > div.form-row > div.form-group-horizontal > div.password-requirements {
+div.container > div.content > div.signup-form > form > div.form-row > div.form-group-horizontal > div.password-requirements {
     margin-top: 10px;
     margin-left: 7px;
     font-size: 0.875rem;
 }
 
-div.container > div.content > div.signup-form > form#teacherSignupForm > div.form-row > div.form-group-vertical {
+div.container > div.content > div.signup-form > form > div.form-row > div.form-group-vertical {
     display: flex;
     flex-direction: column;
 }
 
-div.container > div.content > div.signup-form > form#teacherSignupForm > div.form-row > div.form-group-vertical > div.form-group-horizontal {
+div.container > div.content > div.signup-form > form > div.form-row > div.form-group-vertical > div.form-group-horizontal {
     margin-bottom: 10px;
 }
 
-/* div.container > div.content > div.signup-form > form#teacherSignupForm > div.form-row > div.form-group-horizontal-vertical > div.form-group-horizontal > div.file-upload > input[type="file"] {
+/* div.container > div.content > div.signup-form > form > div.form-row > div.form-group-horizontal-vertical > div.form-group-horizontal > div.file-upload > input[type="file"] {
     position: absolute;
     width: 0;
     height: 0;
     opacity: 0;
 } */
 
-div.container > div.content > div.signup-form > form#teacherSignupForm > div.submit {
+div.container > div.content > div.signup-form > form > div.submit {
     text-align: center;
 }
 
-div.container > div.content > div.signup-form > form#teacherSignupForm > div.submit > button.submit-btn {
+div.container > div.content > div.signup-form > form > div.submit > button.submit-btn {
     font-size: 16px;
     margin-top: 10px;
     width: 30%;
@@ -425,6 +425,10 @@ div.container > div.content > div.form-box > form > div.authentication-requireme
     font-size: 12px;
     margin-bottom: 100px;
     padding-left: 10px;
+}
+
+div.container > div.content > div.form-box > form#teacherCompleteAccount > div.center > button {
+    font-size: 18px;
 }
 
 /* Forgot Password */

@@ -236,7 +236,6 @@ function validateStudentSignUpForm(event) {
     const isPhoneNumberValid = isValidPhoneNumber();
     const isPasswordValid = passwordChecker();
     const isPasswordConfirmationValid = passwordConfirmationChecker();
-    const isFileNameValid = checkFileName();
 
     if (!isEmailValid) {
         emailLabel.classList.add("error");
@@ -277,7 +276,7 @@ function validateStudentSignUpForm(event) {
     else {
         passwordConfirmationLabel.classList.remove("error");
     }
-    if (isEmailValid && isFirstNameValid && isLastNameValid && isPhoneNumberValid && isPasswordValid && isPasswordConfirmationValid && isFileNameValid) {
+    if (isEmailValid && isFirstNameValid && isLastNameValid && isPhoneNumberValid && isPasswordValid && isPasswordConfirmationValid) {
         form.submit();
     }
 }
