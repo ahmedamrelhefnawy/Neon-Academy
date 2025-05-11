@@ -1,4 +1,4 @@
-CREATE PROCEDURE create_teacher_account
+create PROCEDURE create_teacher_account
     @fname VARCHAR(20),
     @lname VARCHAR(20),
     @email VARCHAR(100),
@@ -7,6 +7,7 @@ CREATE PROCEDURE create_teacher_account
     @picture varbinary(MAX),
     @gender VARCHAR(7),
     @phone CHAR(11)
+with encryption
 AS
 BEGIN
 	-- Prevents extra messages like "N rows affected" from being returned. Cleaner output.
@@ -39,15 +40,16 @@ END
 
 go
 
-CREATE PROCEDURE create_student_account
+create PROCEDURE create_student_account
     @fname VARCHAR(20),
     @lname VARCHAR(20),
     @email VARCHAR(100),
     @dob DATE,
     @password VARCHAR(50),
     @gender VARCHAR(7),
-    @acad_year INT,
+    @acad_year VARCHAR(50),
     @phone CHAR(11)
+with encryption
 AS
 BEGIN
 	-- Prevents extra messages like "N rows affected" from being returned. Cleaner output.
@@ -81,10 +83,11 @@ END
 go 
 
 --returns the uid (user id)
-CREATE PROCEDURE authenticate_user
+create PROCEDURE authenticate_user
     @email VARCHAR(100),
     @password VARCHAR(50),
     @uid INT OUTPUT
+with encryption
 AS
 BEGIN
 	-- Prevents extra messages like "N rows affected" from being returned. Cleaner output.
