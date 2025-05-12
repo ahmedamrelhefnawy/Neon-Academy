@@ -127,3 +127,6 @@ def forgot_password(request):
 
 def reset_password(request):
     return render(request, 'pages/reset_password.html')
+
+def student_course_page_exam(request):
+    return render(request, 'pages/student_course_page_exam.html')
