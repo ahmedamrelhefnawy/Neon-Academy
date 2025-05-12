@@ -615,3 +615,98 @@ input[type="text"] {
     color: #2196f3;
     font-weight: 550;
 }
+.exercise-right {
+    width: 45%;
+    padding-left: 110px;
+    margin-right: 40px;
+}
+.course-progress {
+    background-color: #2196f3;
+    color: white;
+    padding: 16px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+.course-name {
+    font-weight: 600;
+    font-size: 27px;
+}
+
+.progress-text {
+    display: flex;
+    justify-content: space-between;
+    font-size: 19px;
+}
+
+.progress-percent {
+    font-weight: bold;
+}
+
+.section {
+    background-color: #34435E;
+    color: #B6B6B6;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.section-header {
+    padding: 10px 16px;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-size: 27px;
+}
+.arrow-image {
+    width: 35px;
+    height: auto;
+    vertical-align: middle;
+    margin-left: 10px;
+    transform: translateX(-7px);
+
+}
+.section-content {
+    background-color: white;
+    color: #333;
+    padding: 10px;
+    display: none;
+}
+
+.section.open .section-content {
+    display: block;
+}
+
+.object {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 30px;
+    color: #3A3A3A;
+}
+
+.object {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 30px;
+    color: #3A3A3A;
+}
+
+.object-icon {
+    width: 38px;
+    height: auto;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.object-name {
+    margin-right: 220px;
+    font-size:32px;
+    font-weight:500;
+}
+.object-number{
+    font-weight: bold;
+}
