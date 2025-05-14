@@ -133,3 +133,6 @@ def student_course_page_exam(request):
 
 def student_course_page_document(request):
     return render(request, 'pages/student_course_page_document.html')
+
+def student_course_page_video(request):
+    return render(request, 'pages/student_course_page_video.html')
