@@ -78,7 +78,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'mssql',
         'NAME': 'Neuracademy',
-        'HOST': 'localhost',
+        'HOST': 'DESKTOP-LFM874L\SQLEXPRESS',
         'OPTIONS': {
             'driver': 'ODBC Driver 17 for SQL Server',
             'trusted_connection': 'yes',

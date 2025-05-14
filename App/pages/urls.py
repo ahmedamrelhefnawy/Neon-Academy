@@ -10,5 +10,5 @@ urlpatterns = [
     path('forgot_password/', views.forgot_password, name='forgot_password'),
     path('reset_password/', views.reset_password, name='reset_password'),
     path('student_course_page_exam/', views.student_course_page_exam, name='student_course_page_exam'),
-
+    path('student_course_page_document/', views.student_course_page_document, name='student_course_page_document'),
 ]

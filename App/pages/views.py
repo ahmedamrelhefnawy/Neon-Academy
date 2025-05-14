@@ -130,3 +130,6 @@ def reset_password(request):
 
 def student_course_page_exam(request):
     return render(request, 'pages/student_course_page_exam.html')
+
+def student_course_page_document(request):
+    return render(request, 'pages/student_course_page_document.html')
