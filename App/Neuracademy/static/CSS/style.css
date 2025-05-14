@@ -728,15 +728,18 @@ input[type="text"] {
     width: 100%;
     aspect-ratio: 16/9;
     border-radius: 4px;
+    margin-left: 33px;
 }
 .video-title {
     font-size: 32px;
     font-weight: bold;
     margin-top: 16px;
     color: #000000;
+    padding-left: 33px;
 }
 .video-description {
     font-size: 20px;
     margin-top: 8px;
     color: #3a3a3a;
+    padding-left: 33px;
 }
