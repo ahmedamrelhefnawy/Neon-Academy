@@ -14,7 +14,7 @@
     <title>Teacher Course Page - Exam</title>
     
 </head>
-<body>
+<body class="teacher-exam">
     <!-- Navigation Bar -->
     <header class="navbar">
         <div class="nav-left">
@@ -29,5 +29,33 @@
             <button class="btn btn-dark">Log out</button>
         </div>
     </header>
+    <main class="main-container">
+      <div class="exercise-left">
+        <h1 class="exercise-title">Exercise Title</h1>
+
+        <div class="question-section">
+          <p class="question-text">MCQ Question Text</p>
+          <div class="mcq-options">
+            <label><input type="checkbox" name="mcq" /><span class="choice-text">Choice Text</span></label>
+            <label><input type="checkbox" name="mcq" /><span class="choice-text">Choice Text</span></label>
+            <label><input type="checkbox" name="mcq" /><span class="choice-text">Choice Text</span></label>
+            <label><input type="checkbox" name="mcq" /><span class="choice-text">Choice Text</span></label>
+          </div>
+          <button class="btn btn-dark">Remove</button>
+        </div>
+        
+
+        <div class="question-section">
+          <p class="question-text">Writing Question Text</p>
+          <input type="text" placeholder="Answer the question" />
+          <button class="btn btn-dark">Remove</button>
+        </div>
+
+        <button class="submit-btn" onclick="submitExercise()">Add Question</button>
+
+      </div>
+      
+
+    </main>
 </body>
 </html>

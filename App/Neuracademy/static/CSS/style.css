@@ -595,7 +595,7 @@ input[type="text"] {
     margin-left: 425px;
     transition: background-color 0.3s, color 0.3s;
     font-weight: 550;
-
+    margin-left: 400px;
 }
 .submit-btn:hover {
     background-color: white;
@@ -742,4 +742,9 @@ input[type="text"] {
     margin-top: 8px;
     color: #3a3a3a;
     padding-left: 33px;
+}
+/* teacher_course_page_exam */
+.teacher-exam .btn-dark {
+    margin-top: 13px;
+    display: block;
 }
