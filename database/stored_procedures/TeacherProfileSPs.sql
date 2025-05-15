@@ -1,3 +1,12 @@
+--Teacher personal details
+create procedure teacherPersonalDetails
+as 
+begin
+	select tid , username, password, fname, lname, email, picture , dob, gender, phone
+	from teacher, app_user
+	where tid = uid
+end
+go 
 --We should specify the number of reviews to show by bassing @TopN input
 CREATE PROCEDURE GetTeacherRecentReviews
     @TeacherId INT,
@@ -128,8 +137,9 @@ END
 go
 CREATE PROCEDURE UpdateTeacherProfile
     @TeacherId INT,
-    @AuthDoc VARBINARY(max) = NULL,
-    @Picture VARBINARY(max) = NULL,
+    @AuthDoc VARCHAR(100) = NULL,
+    @Picture VARCHAR(100) = NULL,
+    @Email VARCHAR(100) = NULL,
     @Phone VARCHAR(11) = NULL
 AS
 BEGIN
@@ -137,19 +147,7 @@ BEGIN
     BEGIN TRY
         IF EXISTS (SELECT 1 FROM teacher WHERE tid = @TeacherId)
         BEGIN
-            -- Check file size for AuthDoc (if provided)
-            IF @AuthDoc IS NOT NULL AND DATALENGTH(@AuthDoc) > 5242880
-            BEGIN
-                RETURN -1; -- AuthDoc too large
-            END
-
-            -- Check file size for Picture (if provided)
-            IF @Picture IS NOT NULL AND DATALENGTH(@Picture) > 5242880
-            BEGIN
-                RETURN -1; -- Picture too large
-            END
-
-            -- Update teacher.auth_doc if valid
+            -- Update teacher.auth_doc if provided
             IF @AuthDoc IS NOT NULL
             BEGIN
                 UPDATE teacher
@@ -157,10 +155,11 @@ BEGIN
                 WHERE tid = @TeacherId;
             END
 
-            -- Update app_user fields
+            -- Update app_user fields if provided
             UPDATE app_user
             SET 
                 picture = ISNULL(@Picture, picture),
+                email = ISNULL(@Email, email),
                 phone = ISNULL(@Phone, phone)
             WHERE uid = @TeacherId;
 
@@ -175,7 +174,6 @@ BEGIN
         RETURN -1; -- error
     END CATCH
 END
-
 go
 CREATE PROCEDURE GetTeacherProfile
     @TeacherId INT
@@ -187,6 +185,7 @@ BEGIN
         BEGIN
             SELECT 
                 au.uid,
+                au.username,
                 au.fname,
                 au.lname,
                 au.email,

@@ -205,13 +205,13 @@ END;
 go 
 CREATE PROCEDURE sp_teacher_update_section
     @section_id INT,
-    @new_sec_order INT
+    @new_sec_name NVARCHAR(255)
 AS
 BEGIN
     SET NOCOUNT ON;
     BEGIN TRY
         UPDATE section
-        SET sec_order = @new_sec_order
+        SET sec_name = @new_sec_name
         WHERE secid = @section_id;
 
         RETURN 0;
@@ -223,13 +223,13 @@ END;
 go 
 CREATE PROCEDURE sp_teacher_add_section
     @course_id INT,
-    @sec_order INT
+    @sec_name VARCHAR(20)
 AS
 BEGIN
     SET NOCOUNT ON;
     BEGIN TRY
-        INSERT INTO section (cid, sec_order)
-        VALUES (@course_id, @sec_order);
+        INSERT INTO section (cid, sec_name)
+        VALUES (@course_id, @sec_name);
 
         RETURN 0;
     END TRY

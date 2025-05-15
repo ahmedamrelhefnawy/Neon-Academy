@@ -1,27 +1,26 @@
 INSERT INTO app_user (password, fname, lname, email, dob, gender, picture, phone) VALUES
--- Students (uid 1–10)
-('pass1', 'John', 'Doe', 'john@example.com', '2000-01-01', 'male', CONVERT(VARBINARY(MAX), 'pic1'), '01000000001'),
-('pass2', 'Jane', 'Smith', 'jane@example.com', '2000-02-02', 'female', CONVERT(VARBINARY(MAX), 'pic2'), '01000000002'),
-('pass3', 'Mike', 'Brown', 'mike@example.com', '2000-03-03', 'male', CONVERT(VARBINARY(MAX), 'pic3'), '01000000003'),
-('pass4', 'Lucy', 'Davis', 'lucy@example.com', '2000-04-04', 'female', CONVERT(VARBINARY(MAX), 'pic4'), '01000000004'),
-('pass5', 'Tom', 'Wilson', 'tom@example.com', '2000-05-05', 'male', CONVERT(VARBINARY(MAX), 'pic5'), '01000000005'),
-('pass6', 'Anna', 'Taylor', 'anna@example.com', '2000-06-06', 'female', CONVERT(VARBINARY(MAX), 'pic6'), '01000000006'),
-('pass7', 'Chris', 'Anderson', 'chris@example.com', '2000-07-07', 'male', CONVERT(VARBINARY(MAX), 'pic7'), '01000000007'),
-('pass8', 'Sara', 'Moore', 'sara@example.com', '2000-08-08', 'female', CONVERT(VARBINARY(MAX), 'pic8'), '01000000008'),
-('pass9', 'David', 'Jackson', 'david@example.com', '2000-09-09', 'male', CONVERT(VARBINARY(MAX), 'pic9'), '01000000009'),
-('pass10', 'Laura', 'Martin', 'laura@example.com', '2000-10-10', 'female', CONVERT(VARBINARY(MAX), 'pic10'), '01000000010'),
--- Teachers (uid 11–20)
-('pass11', 'Alice', 'King', 'alice@example.com', '1985-01-01', 'female', CONVERT(VARBINARY(MAX), 'pic11'), '01000000011'),
-('pass12', 'Bob', 'Lee', 'bob@example.com', '1986-02-02', 'male', CONVERT(VARBINARY(MAX), 'pic12'), '01000000012'),
-('pass13', 'Cathy', 'Wong', 'cathy@example.com', '1987-03-03', 'female', CONVERT(VARBINARY(MAX), 'pic13'), '01000000013'),
-('pass14', 'Dan', 'Kim', 'dan@example.com', '1988-04-04', 'male', CONVERT(VARBINARY(MAX), 'pic14'), '01000000014'),
-('pass15', 'Ella', 'Clark', 'ella@example.com', '1989-05-05', 'female', CONVERT(VARBINARY(MAX), 'pic15'), '01000000015'),
-('pass16', 'Frank', 'Lewis', 'frank@example.com', '1983-06-06', 'male', CONVERT(VARBINARY(MAX), 'pic16'), '01000000016'),
-('pass17', 'Grace', 'Hall', 'grace@example.com', '1984-07-07', 'female', CONVERT(VARBINARY(MAX), 'pic17'), '01000000017'),
-('pass18', 'Henry', 'Allen', 'henry@example.com', '1982-08-08', 'male', CONVERT(VARBINARY(MAX), 'pic18'), '01000000018'),
-('pass19', 'Ivy', 'Young', 'ivy@example.com', '1981-09-09', 'female', CONVERT(VARBINARY(MAX), 'pic19'), '01000000019'),
-('pass20', 'Jack', 'Scott', 'jack@example.com', '1980-10-10', 'male', CONVERT(VARBINARY(MAX), 'pic20'), '01000000020');
-go
+-- Students (uid 1-10)
+('pass1', 'John', 'Doe', 'john@example.com', '2000-01-01', 'male', null, '01000000001'),
+('pass2', 'Jane', 'Smith', 'jane@example.com', '2000-02-02', 'female', null, '01000000002'),
+('pass3', 'Mike', 'Brown', 'mike@example.com', '2000-03-03', 'male', null, '01000000003'),
+('pass4', 'Lucy', 'Davis', 'lucy@example.com', '2000-04-04', 'female', null, '01000000004'),
+('pass5', 'Tom', 'Wilson', 'tom@example.com', '2000-05-05', 'male', null, '01000000005'),
+('pass6', 'Anna', 'Taylor', 'anna@example.com', '2000-06-06', 'female', null, '01000000006'),
+('pass7', 'Chris', 'Anderson', 'chris@example.com', '2000-07-07', 'male', null, '01000000007'),
+('pass8', 'Sara', 'Moore', 'sara@example.com', '2000-08-08', 'female', null, '01000000008'),
+('pass9', 'David', 'Jackson', 'david@example.com', '2000-09-09', 'male', null, '01000000009'),
+('pass10', 'Laura', 'Martin', 'laura@example.com', '2000-10-10', 'female', null, '01000000010'),
+-- Teachers (uid 11-20)
+('pass11', 'Alice', 'King', 'alice@example.com', '1985-01-01', 'female', null, '01000000011'),
+('pass12', 'Bob', 'Lee', 'bob@example.com', '1986-02-02', 'male', null, '01000000012'),
+('pass13', 'Cathy', 'Wong', 'cathy@example.com', '1987-03-03', 'female', null, '01000000013'),
+('pass14', 'Dan', 'Kim', 'dan@example.com', '1988-04-04', 'male', null, '01000000014'),
+('pass15', 'Ella', 'Clark', 'ella@example.com', '1989-05-05', 'female', null, '01000000015'),
+('pass16', 'Frank', 'Lewis', 'frank@example.com', '1983-06-06', 'male', null, '01000000016'),
+('pass17', 'Grace', 'Hall', 'grace@example.com', '1984-07-07', 'female', null, '01000000017'),
+('pass18', 'Henry', 'Allen', 'henry@example.com', '1982-08-08', 'male', null, '01000000018'),
+('pass19', 'Ivy', 'Young', 'ivy@example.com', '1981-09-09', 'female', null, '01000000019'),
+('pass20', 'Jack', 'Scott', 'jack@example.com', '1980-10-10', 'male', null, '01000000020');
 INSERT INTO student (sid, acad_year) VALUES
 (1, 1),
 (2, 2),
@@ -33,19 +32,17 @@ INSERT INTO student (sid, acad_year) VALUES
 (8, 3),
 (9, 4),
 (10, 2);
-go
 INSERT INTO teacher (tid, auth_doc, rating) VALUES
-(11, CONVERT(VARBINARY(MAX), 'auth_doc1'), 8.5),
-(12, CONVERT(VARBINARY(MAX), 'auth_doc2'), 7.8),
-(13, CONVERT(VARBINARY(MAX), 'auth_doc3'), 9.0),
-(14, CONVERT(VARBINARY(MAX), 'auth_doc4'), 7.5),
-(15, CONVERT(VARBINARY(MAX), 'auth_doc5'), 8.0),
-(16, CONVERT(VARBINARY(MAX), 'auth_doc6'), 8.3),
-(17, CONVERT(VARBINARY(MAX), 'auth_doc7'), 9.1),
-(18, CONVERT(VARBINARY(MAX), 'auth_doc8'), 7.2),
-(19, CONVERT(VARBINARY(MAX), 'auth_doc9'), 8.6),
-(20, CONVERT(VARBINARY(MAX), 'auth_doc10'), 7.9);
-go
+(11, null, 8.5),
+(12, null, 7.8),
+(13, null, 9.0),
+(14, null, 7.5),
+(15, null, 8.0),
+(16, null, 8.3),
+(17, null, 9.1),
+(18, null, 7.2),
+(19, null, 8.6),
+(20, null, 7.9);
 INSERT INTO course (tid, cname, description, cyear, semester, rating, subject, price) VALUES
 (11, 'Math 101', 'Intro Math', 1, 'Fall', 8.5, 'Math', 99.99),
 (12, 'Physics 101', 'Intro Physics', 1, 'Spring', 8.0, 'Physics', 120.00),
@@ -59,7 +56,6 @@ INSERT INTO course (tid, cname, description, cyear, semester, rating, subject, p
 (20, 'Psychology 101', 'Intro Psychology', 1, 'Spring', 7.7, 'Psychology', 95.00),
 (11, 'Statistics 101', 'Intro Statistics', 1, 'Fall', 8.4, 'Statistics', 88.00),
 (12, 'Environmental 101', 'Environment Basics', 1, 'Spring', 7.9, 'Environment', 92.00);
-go
 -- Insert 12 sections linked to different courses
 INSERT INTO section (cid, sec_order) VALUES
 (1, 1),
@@ -74,7 +70,6 @@ INSERT INTO section (cid, sec_order) VALUES
 (9, 1),
 (10, 1),
 (11, 1);
-go
 -- Insert 20 objects across different sections
 INSERT INTO object (secid, type, title, description, weight, o_order) VALUES
 (1, 'uploaded_file', 'Lecture 1 File', 'PDF notes for Lecture 1', 1.0, 1),
@@ -100,15 +95,13 @@ INSERT INTO object (secid, type, title, description, weight, o_order) VALUES
 (7, 'exercise', 'Chemistry Quiz', 'Basic chemistry exercises.', 1.0, 2),
 (8, 'exercise', 'Biology Quiz', 'Basic biology exercises.', 1.0, 2),
 (9, 'exercise', 'Programming Quiz', 'Basic programming exercises.', 1.0, 2);
-go
 -- Insert uploaded files
 INSERT INTO uploaded_file (fid, binary_file) VALUES
-(1, CONVERT(VARBINARY(MAX), 'math1.pdf')),
-(2, CONVERT(VARBINARY(MAX), 'math2.pdf')),
-(3, CONVERT(VARBINARY(MAX), 'physics1.pdf')),
-(4, CONVERT(VARBINARY(MAX), 'chem1.pdf')),
-(5, CONVERT(VARBINARY(MAX), 'bio1.pdf'));
-go
+(1, 'math1.pdf'),
+(2, 'math2.pdf'),
+(3, 'physics1.pdf'),
+(4, 'chem1.pdf'),
+(5, 'bio1.pdf');
 -- Insert textboxes
 INSERT INTO textbox (tbid, content) VALUES
 (6, 'This is the course introduction.'),
@@ -116,7 +109,6 @@ INSERT INTO textbox (tbid, content) VALUES
 (8, 'Introduction to Chemistry here.'),
 (9, 'Biology basics introduction.'),
 (10, 'Programming basics explained.');
-go
 -- Insert videos
 INSERT INTO video (vid, link) VALUES
 (11, 'https://youtu.be/intro_course'),
@@ -124,7 +116,6 @@ INSERT INTO video (vid, link) VALUES
 (13, 'https://youtu.be/chem_intro'),
 (14, 'https://youtu.be/bio_intro'),
 (15, 'https://youtu.be/programming_intro');
-go
 -- Insert exercises
 INSERT INTO exercise (eid, marks) VALUES
 (16, 10.0),
@@ -132,7 +123,6 @@ INSERT INTO exercise (eid, marks) VALUES
 (18, 9.5),
 (19, 7.0),
 (20, 9.0);
-go
 -- Insert student finishes with grades
 INSERT INTO finish (sid, oid, grade) VALUES
 (1, 1, 8.0),  -- Student 1 finishes object 1 (uploaded_file)
@@ -155,7 +145,6 @@ INSERT INTO finish (sid, oid, grade) VALUES
 (7, 18, 8.5), -- Student 7 finishes object 18 (exercise)
 (7, 19, 7.0), -- Student 7 finishes object 19 (exercise)
 (8, 20, 9.5); -- Student 8 finishes object 20 (exercise)
-go
 -- Insert student enrollments with course ratings
 INSERT INTO enroll (sid, cid, rating) VALUES
 (1, 1, 8.0),  -- Student 1 enrolls in course 1
@@ -177,7 +166,6 @@ INSERT INTO enroll (sid, cid, rating) VALUES
 (9, 6, 7.0),  -- Student 9 enrolls in course 6
 (10, 7, 8.0), -- Student 10 enrolls in course 7
 (10, 8, 9.0); -- Student 10 enrolls in course 8
-go
 -- Insert student reviews for courses
 INSERT INTO review (cid, sid, rating, content) VALUES
 (1, 1, 8.0, 'Great course, but could use more examples.'),
