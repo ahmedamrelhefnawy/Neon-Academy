@@ -790,3 +790,7 @@ input[type="text"] {
 #addSectionBtn {
     transform: translateX(-220px);
 }
+.question-actions {
+  display: flex;
+  gap: 15px;
+}
