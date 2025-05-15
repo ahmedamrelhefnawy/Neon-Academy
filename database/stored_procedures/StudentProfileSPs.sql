@@ -69,8 +69,7 @@ END
 go
 CREATE PROCEDURE UpdateStudentProfile
     @StudentId INT,
-    @Picture VARCHAR(100) = NULL,
-    @Email VARCHAR(100) = NULL,
+    @Picture VARBINARY(max) = NULL,
     @Phone VARCHAR(11) = NULL
 AS
 BEGIN
@@ -78,20 +77,28 @@ BEGIN
     BEGIN TRY
         IF EXISTS (SELECT 1 FROM student WHERE sid = @StudentId)
         BEGIN
+            -- Check file size for Picture (if provided)
+            IF @Picture IS NOT NULL AND DATALENGTH(@Picture) > 5242880
+            BEGIN
+                RETURN -1; -- Picture too large
+            END
+
+            -- Update app_user fields
             UPDATE app_user
             SET 
                 picture = ISNULL(@Picture, picture),
-                email = ISNULL(@Email, email),
                 phone = ISNULL(@Phone, phone)
             WHERE uid = @StudentId;
 
-            RETURN 0;
+            RETURN 0; -- success
         END
         ELSE
-            RETURN -1;
+        BEGIN
+            RETURN -1; -- student not found
+        END
     END TRY
     BEGIN CATCH
-        RETURN -1;
+        RETURN -1; -- error
     END CATCH
 END
 go
@@ -105,7 +112,6 @@ BEGIN
         BEGIN
             SELECT 
                 au.uid,
-                au.username,
                 au.fname,
                 au.lname,
                 au.email,

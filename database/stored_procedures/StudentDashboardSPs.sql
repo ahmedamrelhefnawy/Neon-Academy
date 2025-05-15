@@ -65,6 +65,35 @@ BEGIN
     END CATCH
 END
 go
+CREATE PROCEDURE FinishedObjects
+    @sid INT,
+    @cid INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    -- Check if student exists and is enrolled in the course
+    IF NOT EXISTS (
+        SELECT 1 
+        FROM student s
+        JOIN enroll e ON s.sid = e.sid
+        WHERE s.sid = @sid AND e.cid = @cid
+    )
+    BEGIN
+        RETURN -1;
+    END
+
+    -- Get all finished objects in the specified course
+    SELECT o.oid, o.title, o.type, o.description, f.grade
+    FROM finish f
+    JOIN object o ON f.oid = o.oid
+    JOIN section s ON o.secid = s.secid
+    JOIN course c ON s.cid = c.cid
+    WHERE f.sid = @sid AND c.cid = @cid;
+
+    RETURN 0;
+END;
+go
 CREATE PROCEDURE IsObjectFinished
     @sid INT,
     @oid INT,

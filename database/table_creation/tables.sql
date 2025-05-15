@@ -1,7 +1,9 @@
 create database Neuracademy
 
+go
 use Neuracademy
 
+go
 create table app_user(
 	uid int not null identity(1,1),
 	password varchar(50)not null,
@@ -10,23 +12,26 @@ create table app_user(
 	email varchar(100) not null,
 	dob date,
 	gender varchar(7) CHECK (LOWER(gender) IN ('male', 'female')),
-	picture varbinary(max),
+	picture VARBINARY(max),
 	phone varchar(11) unique,
 	primary key (uid)
 	);
+go
 create table student(
 	sid int not null,
 	acad_year int CHECK (acad_year > 0),
 	foreign key (sid) references app_user(uid) ON DELETE CASCADE,
 	primary key (sid)
 	);
+go
 create table teacher(
 	tid int not null,
-	auth_doc varbinary(max),
+	auth_doc VARBINARY(max),
 	rating decimal(3,1) CHECK (rating BETWEEN 0 AND 10),
 	foreign key (tid) references app_user(uid) ON DELETE CASCADE,
 	primary key (tid)
 	);
+go
 create table course(
 	cid int not null identity(1,1),
 	tid int,
@@ -41,6 +46,7 @@ create table course(
 	foreign key (tid) references teacher(tid),
 	primary key (cid)
 	);
+go
 create table section(
 	secid int not null identity(1,1),
 	cid int not null,
@@ -48,6 +54,7 @@ create table section(
 	foreign key (cid) references course(cid) ON DELETE CASCADE,
 	primary key (secid)
 	);
+go
 create table object(
 	oid int not null identity(1,1),
 	secid int not null,
@@ -60,35 +67,41 @@ create table object(
 	foreign key (secid) references section(secid) ON DELETE CASCADE,
 	primary key (oid)
 	);
+go
 create table uploaded_file(
 	fid int not null,
-	binary_file varchar(100),
+	binary_file VARBINARY(max),
 	foreign key (fid) references object(oid) ON DELETE CASCADE,
 	primary key (fid)
 	);
+go
 create table textbox(
 	tbid int not null,
 	content varchar(150),
 	foreign key (tbid) references object(oid) ON DELETE CASCADE,
 	primary key (tbid)
 	);
+go
 create table video(
 	vid int not null,
 	link varchar(150),
 	foreign key (vid) references object(oid) ON DELETE CASCADE,
 	primary key (vid)
 	);
+go
 create table exercise(
 	eid int not null,
 	marks decimal(3,1) CHECK (marks >= 0),
 	foreign key (eid) references object(oid) ON DELETE CASCADE,
 	primary key (eid)
 	);
+go
 create table question(
 	qid int not null identity(1,1),
 	content varchar(150) not null,
 	primary key (qid)
 	);
+go
 create table mcq(
 	qid int not null,
 	op1 varchar(50),
@@ -99,12 +112,14 @@ create table mcq(
 	foreign key (qid) references question(qid) ON DELETE CASCADE,
 	primary key (qid)
 	);
+go
 create table writing(
 	qid int not null,
 	answer varchar(200) not null,
 	foreign key (qid) references question(qid) ON DELETE CASCADE,
 	primary key (qid)
 	);
+go
 create table ex_qn(
 	eid int not null,
 	qid int not null,
@@ -113,6 +128,7 @@ create table ex_qn(
 	primary key (eid,qid)
 	);
 
+go
 create table finish(
 	sid int not null,
 	oid int not null,
@@ -121,6 +137,7 @@ create table finish(
 	foreign key (oid) references object(oid) ON DELETE CASCADE,
 	primary key (sid,oid)
 	);
+go
 create table enroll(
 	sid int not null,
 	cid int not null,
@@ -129,6 +146,7 @@ create table enroll(
 	foreign key (cid) references course(cid) ON DELETE CASCADE,
 	primary key (sid,cid)
 	);
+go
 create table review(
 	rid int not null identity(1,1),
 	cid int not null,
