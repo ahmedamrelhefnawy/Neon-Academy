@@ -638,7 +638,7 @@ input[type="text"] {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    cursor: default;
+    cursor: pointer;
     font-size: 27px;
 }
 .section-header .arrow-icon {
