@@ -51,11 +51,32 @@
           <button class="btn btn-dark">Remove</button>
         </div>
 
-        <button class="submit-btn" onclick="submitExercise()">Add Question</button>
+        <button class="submit-btn" id="addQuestionBtn">Add Question</button>
 
       </div>
-      
+      <div class="exercise-right">
+        <div class="course-progress">
+          <p class="course-name">Course Name</p>
+          <p class="progress-text">Progress <span class="progress-percent">80%</span></p>
+        </div>
 
+        <div class="section">
+          <div class="section-header">Section Name<img src="{% static 'images/delete.png' %}" class="delete-icon"></div>
+          <div class="section-content">
+            <div class="object"><img src="{% static 'images/tdesign_icon.png' %}" class="object-icon"><span class="object-name">Object Name</span><span class="object-number"><img src="{% static 'images/edit.png' %}" class="edit-icon"></span></div>
+          </div>
+          <button class="add-object-btn">
+              <span>Add Object</span>
+             <img src="{% static 'images/add.png' %}" class="add-icon">
+          </button>
+        </div>
+
+        <div class="section-btn-container">
+            <button class="btn btn-dark" id="addSectionBtn">Add Section</button>
+        </div>
+
+      </div>
     </main>
+    <script src="{% static 'js/teacher_course_page_exam.js' %}"></script>
 </body>
 </html>
