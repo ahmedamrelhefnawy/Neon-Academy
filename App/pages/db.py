@@ -61,3 +61,40 @@ def call_create_student_account_sp(fname, lname, email, dob, password, gender, a
         except Exception as e:
             print("Error while calling stored procedure: ", e)
             return False
+
+def get_top_courses():
+    with connection.cursor() as cursor:
+        try:
+            sp_name = "get_top_10_rated_courses"
+            query = f"EXEC {sp_name}"
+            
+            cursor.execute(query)
+            result = cursor.fetchall()
+            
+            return result
+        except Exception as e:
+            print("Error while calling stored procedure: ", e)
+            return False
+
+def search_courses(
+    key= None,
+    subject= None,
+    max_rate= None,
+    min_rate= None,
+    academic_year= None,
+    max_price= None,
+    min_price= None
+):
+    with connection.cursor() as cursor:
+        try:
+            sp_name = "search_courses"
+            query = f"EXEC {sp_name} %s, %s, %s, %s, %s, %s, %s"
+            params = [key ,subject ,max_rate ,min_rate ,academic_year ,max_price ,min_price]
+            
+            cursor.execute(query, params)
+            result = cursor.fetchall()
+            
+            return result
+        except Exception as e:
+            print("Error while calling stored procedure: ", e)
+            return False
