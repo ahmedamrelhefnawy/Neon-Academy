@@ -1,54 +1,39 @@
+{% extends "pages/base.html" %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Teacher Sign Up</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
-
-    <link rel="icon" href="{% static 'images/icon.png' %}" />
-
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-
-<body>
-    <div class="container center">
-        <img class="background-right" src="{% static 'images/Background-Educational-Pattern.png' %}" alt="Background Pattern" />
-        <img class="background-left" src="{% static 'images/Background-Educational-Pattern.png' %}" alt="Background Pattern" />
-        <div class="content">
-            <div class="logo teacher-complete-account">
-                <img src="{% static 'images/logo.png' %}" alt="NeurAcademy Logo">
-            </div>
-            <h2 class="main-header">Complete Your Account</h2>
-            <div class="form-box">
-                <form id="teacherCompleteAccount">
-                    <label for="authentication" class="primary authentication-file-label">Authentication (ID Card or Passport)</label>
-                    <div class="file-upload">
-                        <input type="file" id="AuthenticationFile" hidden name="AuthenticationFile" accept=".pdf, .doc, .docx" required/>
-                        <label id="custom-text" class="primary upload-btn" for="AuthenticationFile">
-                            Upload File
-                        </label>
-                    </div>
-                    <div class="authentication-requirements">
-                        <p>• ID Card: Front and back face pictures.</p>
-                        <p>• Passport: The Main page</p>
-                        <p>• Allowed formats: PDF, Word Document</p>
-                    </div>
-                    <div class="center">
-                        <button class="primary teacher-complete-account-submit-btn" type="submit">Proceed</button>
-                    </div>
-                </form>
-            </div>
-            <div class="form-footer">
-                <p class="primary">Not your account? <a class="primary" href="{% url 'sign_in' %}">Log Out</a></p>
-            </div>
+{% block title %}Complete Teacher Account{% endblock title %}
+{% block body %}
+<div class="container center">
+    {% include "pages/components/background.html" %}
+    <div class="content">
+        <div class="logo teacher-complete-account">
+            <img src="{% static 'images/logo.png' %}" alt="NeurAcademy Logo">
+        </div>
+        <h2 class="main-header">Complete Your Account</h2>
+        <div class="form-box">
+            <form id="teacherCompleteAccount", method='post'>
+                {% csrf_token %}
+                <label for="authentication" class="primary authentication-file-label">Authentication (ID Card or Passport)</label>
+                <div class="file-upload">
+                    <input type="file" id="AuthenticationFile" hidden name="AuthenticationFile" accept=".pdf, .doc, .docx" required/>
+                    <label id="custom-text" class="primary upload-btn" for="AuthenticationFile">
+                        Upload File
+                    </label>
+                </div>
+                <div class="authentication-requirements">
+                    <p>• ID Card: Front and back face pictures.</p>
+                    <p>• Passport: The Main page</p>
+                    <p>• Allowed formats: PDF, Word Document</p>
+                </div>
+                <div class="center">
+                    <button class="primary teacher-complete-account-submit-btn" type="submit">Proceed</button>
+                </div>
+            </form>
+        </div>
+        <div class="form-footer">
+            <p class="primary">Not your account? <a class="primary" href="{% url 'sign_in' %}">Log Out</a></p>
         </div>
     </div>
-    <script src="{% static 'js/teacher_complete_account.js' %}"></script>
-</body>
+</div>
+<script src="{% static 'js/teacher_complete_account.js' %}"></script>
+{% endblock body %}
