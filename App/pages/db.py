@@ -28,16 +28,16 @@ def call_authenticate_user_sp(email, password):
             query = f"EXEC {sp_name} %s, %s, @uid OUTPUT;"
             query = '''
                 DECLARE @uid INT;
-                EXEC authenticate_user %s, %s, @uid OUTPUT;
-                SELECT @uid;
+                DECLARE @user_type INT;
+                EXEC authenticate_user %s, %s, @uid OUTPUT, @user_type OUTPUT;
+                SELECT @uid AS uid, @user_type AS user_type;
             '''
             params = [email, password]
             cursor.execute(query, params)
-            uid = cursor.fetchone()[0]
-            if uid == -1:
-                return False
-            else:
-                return True
+            uid, user_type = cursor.fetchone()
+            
+            return uid, user_type
+        
         except Exception as e:
             print("Error while calling stored procedure:", e)
             return False
@@ -58,6 +58,20 @@ def call_create_student_account_sp(fname, lname, email, dob, password, gender, a
                 return False
             else:
                 return True
+        except Exception as e:
+            print("Error while calling stored procedure: ", e)
+            return False
+
+def get_student_profile(student_id):
+    with connection.cursor() as cursor:
+        try:
+            sp_name = "GetStudentEnrolledCourses"
+            query = f'''EXEC {sp_name} %s'''
+            params = [student_id]
+            cursor.execute(query, params)
+            student = cursor.fetchone()
+            
+            return student
         except Exception as e:
             print("Error while calling stored procedure: ", e)
             return False

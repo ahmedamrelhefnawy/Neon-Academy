@@ -6,6 +6,9 @@ from . import db
 
 # Create your views here.
 def teacher_sign_up(request):
+    if 'uid' in request.session and 'user_type' in request.session:
+        return redirect('teacher_complete_account')
+    
     if request.method == 'POST':
         first_name = request.POST.get('firstName')
         last_name = request.POST.get('lastName')
@@ -27,16 +30,40 @@ def teacher_sign_up(request):
     return render(request, 'pages/teacher_sign_up.html')
 
 def sign_in(request):
+    if 'uid' in request.session and 'user_type' in request.session:
+        if request.session['user_type'] == 'teacher':
+            return redirect('teacher_complete_account')
+        
+        if request.session['user_type'] == 'student':
+            # TODO: Put Courses landing page here
+            return redirect('student_complete_account')
+        else:
+            del request.session['uid']
+            del request.session['user_type']
+            
+            return redirect('sign_in')
     if request.method == 'POST':
         email = request.POST.get('email')
         password = request.POST.get('password')
-
-        if db.call_authenticate_user_sp(email, password):
-            return HttpResponse("Signed in successfully!")
         
+        uid, user_type = db.call_authenticate_user_sp(email, password)
+
+        if user_type == -1:
+            return render(request, 'pages/sign_in.html', {'email': email, 'password': password, 'error': "Error in email or password"})
+        
+        # Save user data
+        types = ['student', 'teacher']
+        request.session['uid'] = uid
+        request.session['user_type'] = types[user_type]
+
+        return redirect('student_complete_account')
+    
     return render(request, 'pages/sign_in.html')
 
 def student_sign_up(request):
+    if 'uid' in request.session and 'user_type' in request.session:
+        return redirect('student_complete_account')
+    
     if request.method == 'POST':
         first_name = request.POST.get('firstName')
         last_name = request.POST.get('lastName')
@@ -78,3 +105,10 @@ def student_course_page_video(request):
 
 def teacher_course_page_exam(request):
     return render(request, 'pages/teacher_course_page_exam.html')
+
+def logout(request):
+    if 'uid' in request.session and 'user_type' in request.session:
+        del request.session['uid']
+        del request.session['user_type']
+    
+    return redirect('sign_in')

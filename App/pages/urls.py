@@ -13,4 +13,5 @@ urlpatterns = [
     path('student_course_page_document/', views.student_course_page_document, name='student_course_page_document'),
     path('student_course_page_video/', views.student_course_page_video, name='student_course_page_video'),
     path('teacher_course_page_exam/', views.teacher_course_page_exam, name='teacher_course_page_exam'),
+    path('logout/', views.logout, name='logout'),
 ]

@@ -15,9 +15,9 @@
                 <form id="signInForm" method="POST">
                     {% csrf_token %}
                     <label class="primary email-label" for="email">Email</label>
-                    <input class="input-primary email" name="email" type="email" id="email" placeholder="Enter your email" />
+                    <input class="input-primary email" name="email" type="email" id="email" placeholder="Enter your email" value= "{{email}}" />
                     <label class="primary password-label" for="password">Password</label>
-                    <input class="input-primary password" name="password" type="password" id="password" placeholder="Enter your Password" />
+                    <input class="input-primary password" name="password" type="password" id="password" placeholder="Enter your Password" value= "{{password}}" />
                     <div class="options">
                         <div class="remember-me">
                             <input type="checkbox" id="remember-me"/>
@@ -33,6 +33,9 @@
             <p class="signup-text">
                 <span>Don't have an account?</span>
                 <a class="primary" href="{% url 'student_sign_up' %}">Sign Up</a>
+                {% if error %}
+                    <span>{{error}}</span>
+                {% endif %}
             </p>
         </div>
     </div>
