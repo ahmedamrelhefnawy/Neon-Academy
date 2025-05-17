@@ -17,3 +17,6 @@ test*
 settings.*
 
 roadmap.txt
+
+
+.DS_Store
