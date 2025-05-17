@@ -1,137 +1,123 @@
+{% extends "pages/base.html" %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Teacher Sign Up</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
-
-    <link rel="icon" href="{% static 'images/icon.png' %}" />
-
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-    <div class="container center">
-        <img class="background-right" src="{% static 'images/Background-Educational-Pattern.png' %}" alt="Background Pattern" />
-        <img class="background-left" src="{% static 'images/Background-Educational-Pattern.png' %}" alt="Background Pattern" />
-        <div class="content">
-            <div class="logo">
-                <img src="{% static 'images/logo.png' %}" alt="NeurAcademy Logo">
-            </div>
-            <h2 class="main-header">Create Teacher Account</h2>
-            <div class="signup-form form-box">
-                <form id="teacherSignupForm">
-                    <div class="form-row">
-                        <div class="form-group-horizontal">
-                            <label class="primary first-name-label" for="firstName">First Name</label>
-                            <input class="input-primary first-name" type="text" id="firstName" name="firstName" placeholder="Enter your first name" required>
-                        </div>
-                        <div class="form-group-horizontal">
-                            <label class="primary last-name-label" for="lastName">Last Name</label>
-                            <input class="input-primary last-name" type="text" id="lastName" name="lastName" placeholder="Enter your last name" required>
-                        </div>
+{% block title %}Teacher Sign Up{% endblock title %}
+{% block body %}
+<div class="container center">
+    {% include "pages/components/background.html" %}
+    <div class="content">
+        <div class="logo">
+            <img src="{% static 'images/logo.png' %}" alt="NeurAcademy Logo">
+        </div>
+        <h2 class="main-header">Create Teacher Account</h2>
+        <div class="signup-form form-box">
+            <form id="teacherSignupForm" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="form-group-horizontal">
+                        <label class="primary first-name-label" for="firstName">First Name</label>
+                        <input class="input-primary first-name" type="text" id="firstName" name="firstName" placeholder="Enter your first name" required>
                     </div>
-    
-                    <div class="form-row">
-                        <div class="form-group-horizontal">
-                            <label class="primary email-label" for="email">Email</label>
-                            <input class="input-primary email" type="email" id="email" name="email" placeholder="Enter your email" required>
-                        </div>
-                        <div class="form-group-horizontal">
-                            <label class="primary">Date of Birth</label>
-                            <div class="date-inputs">
-                                <div class="select-wrapper">
-                                    <select class="primary input-primary" id="day" name="day" required></select>
-                                </div>
-                                
-                                <div class="select-wrapper">
-                                    <select class="primary input-primary" id="month" name="month" required>
-                                        <option value="1">January</option>
-                                        <option value="2">February</option>
-                                        <option value="3">March</option>
-                                        <option value="4">April</option>
-                                        <option value="5">May</option>
-                                        <option value="6">June</option>
-                                        <option value="7">July</option>
-                                        <option value="8">August</option>
-                                        <option value="9">September</option>
-                                        <option value="10">October</option>
-                                        <option value="11">November</option>
-                                        <option value="12">December</option>
-                                    </select>
-                                </div>
-                                
-                                <div class="select-wrapper">
-                                    <select class="primary input-primary" id="year" name="year" required></select>
-                                </div>
-                            </div>
-                        </div>                        
+                    <div class="form-group-horizontal">
+                        <label class="primary last-name-label" for="lastName">Last Name</label>
+                        <input class="input-primary last-name" type="text" id="lastName" name="lastName" placeholder="Enter your last name" required>
                     </div>
+                </div>
 
-                    <div class="form-row">
-                        <div class="form-group-horizontal">
-                            <label class="primary password-label" for="password">Password</label>
-                            <input class="input-primary password" type="password" id="password" name="password" placeholder="Enter a strong password" required>
-                            <div class="password-requirements">
-                                <p><span class="hollow-dot"></span> Use both lowercase and uppercase letters</p>
-                                <p><span class="hollow-dot"></span> Use special characters e.g #, (, ...</p>
-                                <p><span class="hollow-dot"></span> Use numbers</p>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group-vertical">
-                            <div class="form-group-horizontal">
-                                <label class="primary profile-picture-label" for="profilePicture">Profile Picture</label>
-                                <div class="file-upload">
-                                    <input type="file" id="profilePicture" hidden name="profilePicture" accept="image/*" required/>
-                                    <label id="custom-text" class="primary upload-btn" for="profilePicture">
-                                        Upload File
-                                    </label>
-                                </div>
-                            </div>
-            
-                            <div class="form-group-horizontal">
-                                <label class="primary" for="gender">Gender</label>
-                                <div class="select-wrapper">
-                                    <select class="input-primary" id="gender" name="gender" required>
-                                        <option value="male" selected>Male</option>
-                                        <option value="female">Female</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
+                <div class="form-row">
+                    <div class="form-group-horizontal">
+                        <label class="primary email-label" for="email">Email</label>
+                        <input class="input-primary email" type="email" id="email" name="email" placeholder="Enter your email" required>
                     </div>
-    
-                    <div class="form-row">
-                        <div class="form-group-horizontal">
-                            <label class="primary password-confirmation-label" for="confirmPassword">Confirm Password</label>
-                            <input class="input-primary password-confirmation" type="password" id="confirmPassword" name="confirmPassword" placeholder="Enter a strong password" required>
+                    <div class="form-group-horizontal">
+                        <label class="primary">Date of Birth</label>
+                        <div class="date-inputs">
+                            <div class="select-wrapper">
+                                <select class="primary input-primary" id="day" name="day" required></select>
+                            </div>
+                            
+                            <div class="select-wrapper">
+                                <select class="primary input-primary" id="month" name="month" required>
+                                    <option value="1">January</option>
+                                    <option value="2">February</option>
+                                    <option value="3">March</option>
+                                    <option value="4">April</option>
+                                    <option value="5">May</option>
+                                    <option value="6">June</option>
+                                    <option value="7">July</option>
+                                    <option value="8">August</option>
+                                    <option value="9">September</option>
+                                    <option value="10">October</option>
+                                    <option value="11">November</option>
+                                    <option value="12">December</option>
+                                </select>
+                            </div>
+                            
+                            <div class="select-wrapper">
+                                <select class="primary input-primary" id="year" name="year" required></select>
+                            </div>
                         </div>
+                    </div>                        
+                </div>
 
-                        <div class="form-group-horizontal">
-                            <label class="primary phone-label" for="phoneNumber">Phone Number</label>
-                            <input class="input-primary phone-number" type="tel" id="phoneNumber" name="phoneNumber" placeholder="e.g. 01XXXXXXXXX" required>
+                <div class="form-row">
+                    <div class="form-group-horizontal">
+                        <label class="primary password-label" for="password">Password</label>
+                        <input class="input-primary password" type="password" id="password" name="password" placeholder="Enter a strong password" required>
+                        <div class="password-requirements">
+                            <p><span class="hollow-dot"></span> Use both lowercase and uppercase letters</p>
+                            <p><span class="hollow-dot"></span> Use special characters e.g #, (, ...</p>
+                            <p><span class="hollow-dot"></span> Use numbers</p>
                         </div>
                     </div>
                     
-                    <div class="submit">
-                        <button type="submit" class="submit-btn primary teacher-sign-up-submit-btn">Sign Up as a Teacher</button>
+                    <div class="form-group-vertical">
+                        <div class="form-group-horizontal">
+                            <label class="primary profile-picture-label" for="profilePicture">Profile Picture</label>
+                            <div class="file-upload">
+                                <input type="file" id="profilePicture" hidden name="profilePicture" accept="image/*" required/>
+                                <label id="custom-text" class="primary upload-btn" for="profilePicture">
+                                    Upload File
+                                </label>
+                            </div>
+                        </div>
+        
+                        <div class="form-group-horizontal">
+                            <label class="primary" for="gender">Gender</label>
+                            <div class="select-wrapper">
+                                <select class="input-primary" id="gender" name="gender" required>
+                                    <option value="male" selected>Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
-                </form>
-            </div>
+                </div>
 
-            <div class="form-footer">
-                <p>Already have an account? <a href="{% url 'sign_in' %}" class="sign-in-link primary">Sign In</a></p>
-                <p>Are you a Student? <a href="{% url 'student_sign_up' %}" class="secondary">Create Student Account</a></p>
-            </div>
+                <div class="form-row">
+                    <div class="form-group-horizontal">
+                        <label class="primary password-confirmation-label" for="confirmPassword">Confirm Password</label>
+                        <input class="input-primary password-confirmation" type="password" id="confirmPassword" name="confirmPassword" placeholder="Enter a strong password" required>
+                    </div>
+
+                    <div class="form-group-horizontal">
+                        <label class="primary phone-label" for="phoneNumber">Phone Number</label>
+                        <input class="input-primary phone-number" type="tel" id="phoneNumber" name="phoneNumber" placeholder="e.g. 01XXXXXXXXX" required>
+                    </div>
+                </div>
+                
+                <div class="submit">
+                    <button type="submit" class="submit-btn primary teacher-sign-up-submit-btn">Sign Up as a Teacher</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="form-footer">
+            <p>Already have an account? <a href="{% url 'sign_in' %}" class="sign-in-link primary">Sign In</a></p>
+            <p>Are you a Student? <a href="{% url 'student_sign_up' %}" class="secondary">Create Student Account</a></p>
         </div>
     </div>
-    <script src="{% static 'js/teacher_sign_up.js' %}"></script>
-</body>
-</html> 
+</div>
+<script src="{% static 'js/teacher_sign_up.js' %}"></script>
+
+{% endblock body %}

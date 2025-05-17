@@ -1,58 +1,45 @@
+{% extends "pages/base.html" %}
 {% load static %}
 
-<!DOCTYPE html>
-
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
-
-        <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-        
-        <link rel="icon" href="{% static 'images/icon.png' %}" />
-
-        <title>NeurAcademy</title>
-    </head>
-
-    <body>
-        <div class="container center">
-            <img class="background-right" src="{% static 'images/Background-Educational-Pattern.png' %}" alt="Background Pattern" />
-            <img class="background-left" src="{% static 'images/Background-Educational-Pattern.png' %}" alt="Background Pattern" />
-            <div class="content">
-                <div class="logo">
-                    <img src="{% static 'images/logo.png' %}" alt="NeurAcademy Logo" />
-                </div>
-                <div class="login">
-                    <h2 class="main-header login-header">Sign In</h2>
-                    <div class="form-box">
-                        <form id="signInForm">
-                            <label class="primary email-label" for="email">Email</label>
-                            <input class="input-primary email" type="email" id="email" placeholder="Enter your email" />
-                            <label class="primary password-label" for="password">Password</label>
-                            <input class="input-primary password" type="password" id="password" placeholder="Enter your Password" />
-                            <div class="options">
-                                <div class="remember-me">
-                                    <input type="checkbox" id="remember-me"/>
-                                    <label class="primary" for="remember-me">
-                                        Remember me
-                                    </label>
-                                </div>
-                                <a class="tertiary" href="#">Forgot your password?</a>
-                            </div>
-                            <button class="primary sign-in-submit-btn" type="submit">Sign in</button>
-                        </form>
-                    </div>
-                    <p class="signup-text">
-                        <span>Don't have an account?</span>
-                        <a class="primary" href="{% url 'teacher_sign_up' %}">Sign Up</a>
-                    </p>
-                </div>
-            </div>
+{% block title %}Neuracademy{% endblock title %}
+{% block body %}
+<div class="container center">
+    {% include "pages/components/background.html" %}
+    <div class="content">
+        <div class="logo">
+            <img src="{% static 'images/logo.png' %}" alt="NeurAcademy Logo" />
         </div>
-        <script src="{% static 'js/sign_in.js' %}"></script>
-    </body>
-</html>
+        <div class="login">
+            <h2 class="main-header login-header">Sign In</h2>
+            <div class="form-box">
+                <form id="signInForm" method="POST">
+                    {% csrf_token %}
+                    <label class="primary email-label" for="email">Email</label>
+                    <input class="input-primary email" name="email" type="email" id="email" placeholder="Enter your email" value= "{{email}}" />
+                    <label class="primary password-label" for="password">Password</label>
+                    <input class="input-primary password" name="password" type="password" id="password" placeholder="Enter your Password" value= "{{password}}" />
+                    <div class="options">
+                        <div class="remember-me">
+                            <input type="checkbox" id="remember-me"/>
+                            <label class="primary" for="remember-me">
+                                Remember me
+                            </label>
+                        </div>
+                        <a class="tertiary" href="{% url 'forgot_password' %}">Forgot your password?</a>
+                    </div>
+                    <button class="primary sign-in-submit-btn" type="submit">Sign in</button>
+                </form>
+            </div>
+            <p class="signup-text">
+                <span>Don't have an account?</span>
+                <a class="primary" href="{% url 'student_sign_up' %}">Sign Up</a>
+                {% if error %}
+                    <span>{{error}}</span>
+                {% endif %}
+            </p>
+        </div>
+    </div>
+</div>
+<script src="{% static 'js/sign_in.js' %}"></script>
+
+{% endblock body %}
