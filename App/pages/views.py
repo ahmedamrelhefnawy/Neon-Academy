@@ -2,68 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.db import connection
 from datetime import datetime
-
-# Helper functions
-def call_create_teacher_account_sp(fname, lname, email, dob, password, profilePicture, gender, phoneNumber):
-    with connection.cursor() as cursor:
-        try:
-            sp_name = "create_teacher_account"
-            query = f'''
-            declare @result int
-            EXEC @result = {sp_name} %s, %s, %s, %s, %s, %s, %s, %s
-            select @result
-            '''
-            params = [fname, lname, email, dob, password, profilePicture, gender, phoneNumber]
-            cursor.execute(query, params)
-            result = cursor.fetchone()[0]
-            if result == -1:
-                return False
-            else:
-                return True
-        except Exception as e:
-            print("Error while calling stored procedure:", e)
-            return False
-        
-def call_authenticate_user_sp(email, password):
-    with connection.cursor() as cursor:
-        try:
-            sp_name = "authenticate_user"
-            query = f"EXEC {sp_name} %s, %s, @uid OUTPUT;"
-            query = '''
-                DECLARE @uid INT;
-                EXEC authenticate_user %s, %s, @uid OUTPUT;
-                SELECT @uid;
-            '''
-            params = [email, password]
-            cursor.execute(query, params)
-            uid = cursor.fetchone()[0]
-            if uid == -1:
-                return False
-            else:
-                return True
-        except Exception as e:
-            print("Error while calling stored procedure:", e)
-            return False
-        
-def call_create_student_account_sp(fname, lname, email, dob, password, gender, academicYear, phone_number):
-    with connection.cursor() as cursor:
-        try:
-            sp_name = "create_student_account"
-            query = f'''
-            declare @result int
-            EXEC @result = {sp_name} %s, %s, %s, %s, %s, %s, %s, %s
-            select @result
-            '''
-            params = [fname, lname, email, dob, password, gender, academicYear, phone_number]
-            cursor.execute(query, params)
-            result = cursor.fetchone()[0]
-            if result == -1:
-                return False
-            else:
-                return True
-        except Exception as e:
-            print("Error while calling stored procedure: ", e)
-            return False
+from . import db
 
 # Create your views here.
 def teacher_sign_up(request):
@@ -82,7 +21,7 @@ def teacher_sign_up(request):
         profile_picture = request.FILES.get('profilePicture')
         profile_picture_binary = profile_picture.read()
 
-        if call_create_teacher_account_sp(first_name, last_name, email, dob, password, profile_picture_binary, gender, phone_number):
+        if db.call_create_teacher_account_sp(first_name, last_name, email, dob, password, profile_picture_binary, gender, phone_number):
             return redirect('teacher_complete_account')
 
     return render(request, 'pages/teacher_sign_up.html')
@@ -92,7 +31,7 @@ def sign_in(request):
         email = request.POST.get('email')
         password = request.POST.get('password')
 
-        if call_authenticate_user_sp(email, password):
+        if db.call_authenticate_user_sp(email, password):
             return HttpResponse("Signed in successfully!")
         
     return render(request, 'pages/sign_in.html')
@@ -111,7 +50,7 @@ def student_sign_up(request):
         academic_year = request.POST.get('academicYear')
         phone_number = request.POST.get('phoneNumber')
 
-        if call_create_student_account_sp(first_name, last_name, email, dob, password, gender, academic_year, phone_number):
+        if db.call_create_student_account_sp(first_name, last_name, email, dob, password, gender, academic_year, phone_number):
             return redirect('student_complete_account')
 
     return render(request, 'pages/student_sign_up.html')
