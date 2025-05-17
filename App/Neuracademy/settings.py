@@ -11,7 +11,9 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 import os
+from dotenv import load_dotenv
 from pathlib import Path
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -71,6 +73,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "Neuracademy.wsgi.application"
 
+# Load environment variables from .env file
+load_dotenv(os.path.join(BASE_DIR, '.env'))
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
@@ -78,8 +82,8 @@ WSGI_APPLICATION = "Neuracademy.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'mssql',
-        'NAME': 'Neuracademy',
-        'HOST': '(LocalDB)\MSSQLLocalDB',
+        'NAME': os.getenv('DB_NAME'),
+        'HOST': os.getenv('DB_HOST'),
         'OPTIONS': {
             'driver': 'ODBC Driver 17 for SQL Server',
             'trusted_connection': 'yes',
