@@ -216,10 +216,10 @@ a.secondary {
     color: var(--button-primary);
     text-decoration: none;
     background-color: var(--button-secondary);
-    padding: 10px 15px;
+    padding: 8px 30px;
     border: 2px solid transparent;
-    border-radius: 15px;
-    -webkit-border-radius: 15px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
     -moz-border-radius: 15px;
     -ms-border-radius: 15px;
     -o-border-radius: 15px;
@@ -396,8 +396,8 @@ div.container > div.content > div.form-footer {
 }
 
 div.container > div.content > div.form-footer > p {
-    margin-top: 4px;
-    margin-bottom: 12px;
+    margin-top: 31px;
+    margin-bottom: 31px;
 }
 
 div.container > div.content > div.form-footer > p > a.secondary {
@@ -592,10 +592,8 @@ input[type="text"] {
     border-radius: 6px;
     border: none;
     cursor: pointer;
-    margin-left: 425px;
     transition: background-color 0.3s, color 0.3s;
     font-weight: 550;
-    margin-left: 400px;
 }
 .submit-btn:hover {
     background-color: white;
