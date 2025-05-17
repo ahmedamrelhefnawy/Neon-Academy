@@ -4,7 +4,10 @@ from django.db import connection
 from datetime import datetime
 
 # Create your views here.
-def load_object(request):
+
+def load_object(request, course_id, obj_id):
+    if 'uid' not in request.session or 'user_type' not in request.session:
+        return redirect('sign_in')
     pass
 
 
