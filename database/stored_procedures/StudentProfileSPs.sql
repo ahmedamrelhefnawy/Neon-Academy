@@ -105,7 +105,6 @@ BEGIN
         BEGIN
             SELECT 
                 au.uid,
-                au.username,
                 au.fname,
                 au.lname,
                 au.email,

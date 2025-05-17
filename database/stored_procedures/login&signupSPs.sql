@@ -83,30 +83,35 @@ END
 go 
 
 --returns the uid (user id)
-create PROCEDURE authenticate_user
+CREATE PROCEDURE authenticate_user
     @email VARCHAR(100),
     @password VARCHAR(50),
-    @uid INT OUTPUT
-with encryption
+    @uid INT OUTPUT,
+    @user_type INT OUTPUT  -- 0 = student, 1 = teacher, -1 = not found
 AS
 BEGIN
-	-- Prevents extra messages like "N rows affected" from being returned. Cleaner output.
     SET NOCOUNT ON;
 
-    BEGIN TRY
-        -- Check if user exists with given username and password
-        SELECT @uid = a.uid
-        FROM app_user a
-        WHERE a.email = @email AND a.password = @password;
+    SELECT @uid = uid
+    FROM app_user
+    WHERE email = @email AND password = @password;
 
-        -- If no user found, set uid to -1
-        IF @uid IS NULL
-            SET @uid = -1;
+    IF @uid IS NULL
+    BEGIN
+        SET @user_type = -1;
+        RETURN;
+    END
 
-        RETURN 0; -- success (even if wrong credentials, process is successful)
-    END TRY
-    BEGIN CATCH
-        SET @uid = -1;
-        RETURN -1; -- failure (error occurred)
-    END CATCH
-END
+    IF EXISTS (SELECT 1 FROM student WHERE sid = @uid)
+    BEGIN
+        SET @user_type = 0;
+    END
+    ELSE IF EXISTS (SELECT 1 FROM teacher WHERE tid = @uid)
+    BEGIN
+        SET @user_type = 1;
+    END
+    ELSE
+    BEGIN
+        SET @user_type = -1;
+    END
+END;

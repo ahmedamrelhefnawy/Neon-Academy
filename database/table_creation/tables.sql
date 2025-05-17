@@ -10,7 +10,7 @@ create table app_user(
 	email varchar(100) not null,
 	dob date,
 	gender varchar(7) CHECK (LOWER(gender) IN ('male', 'female')),
-	picture varbinary(max),
+	picture VARBINARY(max),
 	phone varchar(11) unique,
 	primary key (uid)
 	);
@@ -22,7 +22,7 @@ create table student(
 	);
 create table teacher(
 	tid int not null,
-	auth_doc varbinary(max),
+	auth_doc VARBINARY(max),
 	rating decimal(3,1) CHECK (rating BETWEEN 0 AND 10),
 	foreign key (tid) references app_user(uid) ON DELETE CASCADE,
 	primary key (tid)
@@ -30,7 +30,7 @@ create table teacher(
 create table course(
 	cid int not null identity(1,1),
 	tid int,
-	cname varchar(30) not null,
+	cname varchar(30) not null, 
 	description varchar(150),
 	cyear int CHECK (cyear > 0),
 	semester varchar(10),
@@ -62,7 +62,7 @@ create table object(
 	);
 create table uploaded_file(
 	fid int not null,
-	binary_file varchar(100),
+	binary_file VARBINARY(max),
 	foreign key (fid) references object(oid) ON DELETE CASCADE,
 	primary key (fid)
 	);
