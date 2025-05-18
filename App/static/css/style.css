@@ -182,11 +182,15 @@ button.primary {
     background-color: var(--light-primary);
     color: var(--button-primary);
     width: fit-content;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 20px;
-    padding: 3px;
+    padding: 5px 30px;
     border: 2px solid transparent;
-    border-radius: 6px;
+    border-radius: 10px;
     cursor: pointer;
+    font-size: 22px;
     font-weight: 500;
     transition: background-color 0.3s ease, color 0.3s ease;
     -webkit-transition: background-color 0.3s ease, color 0.3s ease;
@@ -401,7 +405,7 @@ div.container > div.content > div.form-footer > p {
 }
 
 div.container > div.content > div.form-footer > p > a.secondary {
-    font-size: 20px;
+    font-size: 16px;
 }
 
 
@@ -799,7 +803,7 @@ input[type="text"] {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    background-color: #1490E4;
+    background-color: #2196f3;
     padding: 12px 30px;
     color: white;
     position: fixed;
@@ -824,6 +828,11 @@ input[type="text"] {
     text-decoration: none;
     font-weight: 500;
     font-size: 15px;
+}
+
+.container.profile {
+    width: 100%;
+    display: block;
 }
 
 .content.profile {
@@ -904,19 +913,4 @@ input[type="text"] {
 
 .submit {
     margin-top: 30px;
-}
-
-.submit-btn.primary {
-    background-color: #1490E4;
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 4px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.submit-btn.primary:hover {
-    background-color: #0e7bc0;
 }
