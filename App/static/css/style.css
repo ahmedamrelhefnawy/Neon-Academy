@@ -826,12 +826,6 @@ input[type="text"] {
     font-size: 15px;
 }
 
-.container.profile {
-    width: 100%;
-    padding-top: 80px; /* Space for fixed nav */
-    display: block;
-}
-
 .content.profile {
     max-width: 950px;
     margin: 0 auto;

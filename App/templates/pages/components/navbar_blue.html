@@ -1,14 +1,14 @@
 {% load static %}
 <header class="navbar">
     <div class="nav-left">
-        <a href="#" class="nav-icon"><img src="{% static 'images/iconamoon_profile-fill.png' %}" alt="Profile" class="nav-img"></a>
+        <a href="{% url "update_profile" %}" class="nav-icon"><img src="{% static 'images/iconamoon_profile-fill.png' %}" alt="Profile" class="nav-img"></a>
         <a href="#" class="nav-icon"><img src="{% static 'images/home.png' %}" alt="Home" class="nav-img"></a>
     </div>
     <div class="logo">
         <img src="{% static 'images/Frame 1321317459.png' %}" alt="Logo" class="logo-img">
     </div>
     <div class="nav-right">
-        <a href="#" class="nav-link">Manage Courses</a>
+        <a href="#" class="nav-link">My Courses</a>
         <a href="{% url 'logout' %}" class="btn btn-dark" style="text-decoration: none;">Log out</a>
     </div>
 </header>

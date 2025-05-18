@@ -828,7 +828,6 @@ input[type="text"] {
 
 .container.profile {
     width: 100%;
-    padding-top: 80px; /* Space for fixed nav */
     display: block;
 }
 
