@@ -65,13 +65,40 @@ def call_create_student_account_sp(fname, lname, email, dob, password, gender, a
 def get_student_profile(student_id):
     with connection.cursor() as cursor:
         try:
-            sp_name = "GetStudentEnrolledCourses"
+            sp_name = "GetStudentProfile"
             query = f'''EXEC {sp_name} %s'''
             params = [student_id]
             cursor.execute(query, params)
             student = cursor.fetchone()
             
             return student
+        except Exception as e:
+            print("Error while calling stored procedure: ", e)
+            return False
+
+def update_student_profile(
+    student_id,
+    fname,
+    lname,
+    email,
+    phone,
+    dob,
+    picture,
+    password,
+):
+    with connection.cursor() as cursor:
+        try:
+            sp_name = "UpdateStudentProfile"
+            query = f'''
+            declare @result int
+            EXEC @result = {sp_name} %s, %s, %s, %s, %s, %s, %s, %s
+            select @result
+            '''
+            params = [student_id, fname, lname, email, phone, dob, picture, password]
+            cursor.execute(query, params)
+            result = cursor.fetchone()
+            
+            return result
         except Exception as e:
             print("Error while calling stored procedure: ", e)
             return False
