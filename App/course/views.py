@@ -44,11 +44,11 @@ def load_course_page(request, course_id, obj_id):
     # Get each section's objects
     for section in sections:
         section['objects'] = db.get_section_objs(section['secid'])
-        if not section['objects']:
-            return HttpResponse("Error fetching objects.")
     
     # Get finished objects
     finished_objects = db.get_finished_objects(request.session['uid'], course_id)
+    if not finished_objects:
+        finished_objects = []
     
     # Make sidebar object (Sections, each section's objects)
     if obj_id == 0:
@@ -60,6 +60,7 @@ def load_course_page(request, course_id, obj_id):
         'finished_objects': finished_objects,
     }
     
+    
     # Get current object data
     current_object = db.get_full_object(obj_id)
     if not current_object:
@@ -69,6 +70,7 @@ def load_course_page(request, course_id, obj_id):
         'course': course_data,
         'current_object': current_object,
         'side_bar': side_bar,
+        'progress_percent': int(len(finished_objects) / len([obj for sec in sections for obj in sec['objects']]) * 100) if finished_objects else 0,
     })
 
 @session_required

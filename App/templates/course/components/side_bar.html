@@ -3,18 +3,34 @@
 
 <div class="course-progress">
     <p class="course-name">{{ course.cname }}</p>
-    <p class="progress-text">Progress <span class="progress-percent">{{ progress_percent }}</span></p>
+    <p class="progress-text">Progress <span class="progress-percent">{{ progress_percent }}%</span></p>
 </div>
 {% for section in side_bar.sections %}
 <div class="section">
     <div class="section-header">Section {{ forloop.counter }}<img src="{% static 'images/down-arrow2.png' %}" alt="Arrow" class="arrow-icon"></div>
     <div class="section-content">
         {% for object in section.objects %}
-        <div class="object {% if object.active %}active{% endif %}">
+        <a href="{% url 'course' course.cid object.oid %}" class="object-link">
+
+            <div class="object {% if object.oid == current_object.oid %}active{% endif %}">
+            {% if object.type == 'exercise' %}
+            <img src="{% static 'images/exercise.png' %}" class="object-icon">
+            {% elif object.type == 'video' %}
+            <img src="{% static 'images/video.png' %}" class="object-icon">
+            {% elif object.type == 'uploaded_file' %}
+            <img src="{% static 'images/file.png' %}" class="object-icon">
+            {% elif object.type == 'textbox' %}
+            <img src="{% static 'images/textbox.png' %}" class="object-icon">
+            {% else %}
+            <p> {{ object.type }}</p>
+            
             <img src="{% static 'images/tdesign_icon.png' %}" class="object-icon">
+            {% endif %}
+
             <span class="object-name">{{ object.title }}</span>
             <span class="object-number">{{ object.o_order }}</span>
-        </div>
+            </div>
+        </a>
         {% endfor %}
     </div>
 </div>

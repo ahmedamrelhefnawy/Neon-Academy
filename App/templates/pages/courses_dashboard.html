@@ -21,7 +21,7 @@
                         <h3 class="course-name">{{ course.cname }}</h3>
                         <p class="teacher-name">{{ course.teacher_name }}</p>
                         <div class="rating">{{ course.rating }}/10</div>
-                        <button class="enroll-btn">Enroll</button>
+                        <a href="{% url 'course' course.cid 0 %}" class="enroll-btn">Enroll</a>
                     </div>
                 </div>
                 {% empty %}

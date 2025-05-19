@@ -343,3 +343,46 @@ BEGIN
     END CATCH
 END
 GO
+CREATE PROCEDURE GetExamQuestions
+    @eid INT
+AS
+BEGIN
+    SELECT 
+        q.qid,
+        q.content,
+        CASE 
+            WHEN m.qid IS NOT NULL THEN 'MCQ'
+            WHEN w.qid IS NOT NULL THEN 'Writing'
+            ELSE 'Unknown'
+        END AS question_type
+    FROM ex_qn eq
+    JOIN question q ON eq.qid = q.qid
+    LEFT JOIN mcq m ON q.qid = m.qid
+    LEFT JOIN writing w ON q.qid = w.qid
+    WHERE eq.eid = @eid;
+END;
+go
+CREATE PROCEDURE GetMCQDetails
+    @qid INT
+AS
+BEGIN
+    -- Check if the question exists in MCQ table
+    IF EXISTS (SELECT 1 FROM mcq WHERE qid = @qid)
+    BEGIN
+        SELECT 
+            m.qid,
+            q.content AS question,
+            m.op1,
+            m.op2,
+            m.op3,
+            m.op4,
+            m.answer AS correct_answer
+        FROM mcq m
+        JOIN question q ON m.qid = q.qid
+        WHERE m.qid = @qid;
+    END
+    ELSE
+    BEGIN
+        PRINT 'This question is not a multiple-choice question.';
+    END
+END;

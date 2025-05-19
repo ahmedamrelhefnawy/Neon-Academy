@@ -19,9 +19,7 @@ def require_no_session(view_func):
                 return redirect('teacher_complete_account')
             
             elif request.session['user_type'] == 'student':
-                student_data = db.get_student_profile(request.session['uid'])
-                if student_data['picture'] != None:
-                    return redirect('dashboard/')
+                return redirect('dashboard/')
             
             else:
                 del request.session['uid']
@@ -91,7 +89,7 @@ def sign_in(request):
         request.session['uid'] = uid
         request.session['user_type'] = types[user_type]
 
-        return redirect('student_complete_account')
+        return redirect('dashboard/') #TODO: Replace with My Courses page
     
     return render(request, 'pages/sign_in.html')
 

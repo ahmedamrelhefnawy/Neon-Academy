@@ -6,5 +6,7 @@
         {{ current_object.description|safe }}
     </div>
 
-    <a href="{% url 'download_file' current_object.oid %}" class="download-btn">Download Document</a>
+    <div class="download-container">
+        <a href="{% url 'download_file' current_object.oid %}" class="download-btn">Download Document</a>
+    </div>
 </div>

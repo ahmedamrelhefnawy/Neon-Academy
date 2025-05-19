@@ -3,7 +3,7 @@
 <div class="exercise-container" {% if exam.id %}data-exam-id="{{ exam.id }}"{% endif %}>
     <h1 class="exercise-title">{{ exam.title }}</h1>
 
-    {% for question in exam.questions %}
+    {% comment %} {% for question in exam.questions %}
         <div class="question-section">
             <p class="question-text">{{ question.text }}</p>
             
@@ -20,7 +20,29 @@
                 <input type="text" name="question_{{ question.id }}" placeholder="Answer the question" />
             {% endif %}
         </div>
-    {% endfor %}
+    {% endfor %} {% endcomment %}
+    <h1 class="exercise-title">Exercise Title</h1>
 
-    <button class="submit-btn">Submit</button>
+      <div class="question-section">
+        <p class="question-text">MCQ Question Text</p>
+        <div class="mcq-options">
+          <label><input type="radio" name="mcq" /><span class="choice-text">Choice Text</span></label>
+          <label><input type="radio" name="mcq" /><span class="choice-text">Choice Text</span></label>
+          <label><input type="radio" name="mcq" /><span class="choice-text">Choice Text</span></label>
+          <label><input type="radio" name="mcq" /><span class="choice-text">Choice Text</span></label>
+        </div>
+      </div>
+
+      <div class="question-section">
+        <p class="question-text">Writing Question Text</p>
+        <input type="text" placeholder="Answer the question" />
+      </div>
+
+      <div class="question-section">
+        <p class="question-text">Writing Question Text</p>
+        <input type="text" placeholder="Answer the question" />
+      </div>
+
+      <button class="submit-btn" onclick="submitExercise()">Submit</button>
+
 </div>

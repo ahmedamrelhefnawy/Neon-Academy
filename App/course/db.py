@@ -185,3 +185,30 @@ def get_full_object(oid):
         except Exception as e:
             print("Error while calling stored procedure:", e)
             return None
+def get_exam_questions(eid):
+    with connection.cursor() as cursor:
+        try:
+            sp_name = "GetExamQuestions"
+            query = f"EXEC {sp_name} %s"
+            params = [eid]
+            cursor.execute(query, params)
+            columns = [col[0] for col in cursor.description]
+            result = [dict(zip(columns, row)) for row in cursor.fetchall()]
+            return result
+        except Exception as e:
+            print("Error while calling stored procedure:", e)
+            return False
+
+def get_mcq_details(qid):
+    with connection.cursor() as cursor:
+        try:
+            sp_name = "GetMCQDetails"
+            query = f"EXEC {sp_name} %s"
+            params = [qid]
+            cursor.execute(query, params)
+            columns = [col[0] for col in cursor.description]
+            result = [dict(zip(columns, row)) for row in cursor.fetchall()]
+            return result[0] if result else None
+        except Exception as e:
+            print("Error while calling stored procedure:", e)
+            return None
