@@ -1,0 +1,29 @@
+{% extends "course/base.html" %}
+{% load static %}
+{% block title %}
+    Student Course Page - 
+    {% if current_object.type == 'video' %}Video{% endif %}
+    {% if current_object.type == 'exercise' %}Exercise{% endif %}
+    {% if current_object.type == 'uploaded_file' %}Document{% endif %}
+    {% if current_object.type == 'textbox' %}Text Content{% endif %}
+{% endblock title %}
+
+{% block body %}
+<main class="main-container">
+    <div class="exercise-left">
+    {% if current_object.type == 'video' %}
+        {% include "course/components/video.html" %}
+    {% elif current_object.type == 'exercise' %}
+        {% include "course/components/exercise.html" %}
+    {% elif current_object.type == 'uploaded_file' %}
+        {% include "course/components/document.html" %}
+    {% elif current_object.type == 'textbox' %}
+        {% include "course/components/textbox.html" %}
+    {% endif %}
+    </div>
+    <div class="exercise-right">
+        {% include "course/components/side_bar.html" %}
+    </div>
+</main>
+<script src="{% static 'js/student_course_page.js' %}"></script>
+{% endblock body %}

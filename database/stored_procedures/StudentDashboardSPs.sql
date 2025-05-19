@@ -242,3 +242,104 @@ BEGIN
     WHERE s.cid = @cid
     ORDER BY s.sec_order, o.o_order;
 END;
+go
+CREATE PROCEDURE GetObjectById
+    @oid INT
+AS
+BEGIN
+    BEGIN TRY
+        DECLARE @objType VARCHAR(50);
+
+        -- Get the object type
+        SELECT @objType = type FROM object WHERE oid = @oid;
+
+        IF (@objType = 'uploaded_file')
+        BEGIN
+            SELECT
+                o.oid,
+                o.secid,
+                o.type,
+                o.title,
+                o.description,
+                o.creation_date,
+                o.weight,
+                o.o_order,
+                f.fid,
+                f.binary_file
+            FROM object o
+			LEFT JOIN uploaded_file f ON o.oid = f.fid
+            WHERE o.oid = @oid;
+        END
+        ELSE IF (@objType = 'textbox')
+        BEGIN
+            SELECT
+                o.oid,
+                o.secid,
+                o.type,
+                o.title,
+                o.description,
+                o.creation_date,
+                o.weight,
+                o.o_order,
+                t.tbid,
+                t.content
+            FROM object o
+            LEFT JOIN textbox t ON o.oid = t.tbid
+            WHERE o.oid = @oid;
+        END
+        ELSE IF (@objType = 'video')
+        BEGIN
+            SELECT
+                o.oid,
+                o.secid,
+                o.type,
+                o.title,
+                o.description,
+                o.creation_date,
+                o.weight,
+                o.o_order,
+                v.vid,
+                v.link
+            FROM object o
+            LEFT JOIN video v ON o.oid = v.vid
+            WHERE o.oid = @oid;
+        END
+        ELSE IF (@objType = 'exercise')
+        BEGIN
+            SELECT
+                o.oid,
+                o.secid,
+                o.type,
+                o.title,
+                o.description,
+                o.creation_date,
+                o.weight,
+                o.o_order,
+                e.eid,
+                e.marks
+            FROM object o
+            LEFT JOIN exercise e ON o.oid = e.eid
+            WHERE o.oid = @oid;
+        END
+        ELSE
+        BEGIN
+            SELECT
+                oid,
+                secid,
+                type,
+                title,
+                description,
+                creation_date,
+                weight,
+                o_order
+            FROM object
+            WHERE oid = @oid;
+        END
+
+        RETURN 0; -- success
+    END TRY
+    BEGIN CATCH
+        RETURN -1; -- failure
+    END CATCH
+END
+GO

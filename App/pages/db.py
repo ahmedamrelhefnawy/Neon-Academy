@@ -1,5 +1,4 @@
 from django.db import connection
-from datetime import datetime
 
 def call_create_teacher_account_sp(fname, lname, email, dob, password, profilePicture, gender, phoneNumber):
     with connection.cursor() as cursor:
@@ -69,7 +68,9 @@ def get_student_profile(student_id):
             query = f'''EXEC {sp_name} %s'''
             params = [student_id]
             cursor.execute(query, params)
-            student = cursor.fetchone()
+            
+            columns = [col[0] for col in cursor.description]
+            student = dict(zip(columns, cursor.fetchone()))
             
             return student
         except Exception as e:
@@ -96,7 +97,9 @@ def update_student_profile(
             '''
             params = [student_id, fname, lname, email, phone, dob, picture, password]
             cursor.execute(query, params)
-            result = cursor.fetchone()
+            
+            columns = [col[0] for col in cursor.description]
+            result = dict(zip(columns, cursor.fetchone()))
             
             return result
         except Exception as e:
@@ -106,11 +109,12 @@ def update_student_profile(
 def get_top_courses():
     with connection.cursor() as cursor:
         try:
-            sp_name = "get_top_10_rated_courses"
+            sp_name = "get_top_10_best_sellers"
             query = f"EXEC {sp_name}"
             
             cursor.execute(query)
-            result = cursor.fetchall()
+            columns = [col[0] for col in cursor.description]
+            result = [dict(zip(columns, row)) for row in cursor.fetchall()]
             
             return result
         except Exception as e:
@@ -133,9 +137,32 @@ def search_courses(
             params = [key ,subject ,max_rate ,min_rate ,academic_year ,max_price ,min_price]
             
             cursor.execute(query, params)
-            result = cursor.fetchall()
             
-            return result
+            columns = [col[0] for col in cursor.description]
+            courses = [dict(zip(columns, row)) for row in cursor.fetchall()]
+
+            return courses
+        except Exception as e:
+            print("Error while calling stored procedure: ", e)
+            return False
+
+def enroll_course(
+    student_id,
+    course_id,
+    academic_year,
+):
+    with connection.cursor() as cursor:
+        try:
+            sp_name = "EnrollInCourse"
+            query = f'''
+            DECLARE @result INT
+            EXEC @result = {sp_name} %s, %s
+            SELECT @result
+            '''
+            params = [student_id, course_id]
+            cursor.execute(query, params)
+            result = cursor.fetchone()[0]
+            return result == 0
         except Exception as e:
             print("Error while calling stored procedure: ", e)
             return False

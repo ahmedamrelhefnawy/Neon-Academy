@@ -1,0 +1,23 @@
+{% load static %}
+
+
+  <h1 class="exercise-title">Exercise Title</h1>
+  {% for question in exam.questions %}
+    <div class="question-section">
+      <p class="question-text">MCQ Question Text</p>
+      {%if question.question_type == 'mcq' %}
+        <div class="mcq-options">
+      {% option in question.options %}
+            <label>
+              <input type="checkbox" name="question_{{ question.id }}" value="{{ option.id }}" />
+              <span class="choice-text">{{ option.text }}</span>
+            </label>
+          {% endfor %}
+        </div>
+      {% elif question.type == 'text' %}
+        <input type="text" name="question_{{ question.id }}" placeholder="Answer the question" />
+        {% endif %}
+    </div>
+    {% endfor %}
+   
+    <button class="submit-btn" onclick="submitExercise()">Submit</button>

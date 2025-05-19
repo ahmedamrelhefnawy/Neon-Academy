@@ -1,0 +1,120 @@
+{% extends "pages/base.html" %}
+{% load static %}
+
+{% block title %}Courses Dashboard{% endblock title %}
+{% block body %}
+<div class="container courses-dashboard">
+    {% include "pages/components/navbar_blue.html" %}
+    <div class="content">
+        <h2 class="main-header">Best Sellers on Neuracademy</h2>
+        
+        <div class="courses-slider">
+            <div class="slider-arrow slider-prev">
+                <img src="{% static 'images/down-arrow.png' %}" alt="Previous" style="transform: rotate(90deg);">
+            </div>
+            
+            <div class="courses-cards">
+                {% for course in best_sellers %}
+                <div class="course-card">
+                    <div class="course-image"></div>
+                    <div class="course-info">
+                        <h3 class="course-name">{{ course.cname }}</h3>
+                        <p class="teacher-name">{{ course.teacher_name }}</p>
+                        <div class="rating">{{ course.rating }}/10</div>
+                        <button class="enroll-btn">Enroll</button>
+                    </div>
+                </div>
+                {% empty %}
+                <p class="no-courses">No courses available</p>
+                {% endfor %}
+            </div>
+            
+            <div class="slider-arrow slider-next">
+                <img src="{% static 'images/down-arrow.png' %}" alt="Next" style="transform: rotate(270deg);">
+            </div>
+        </div>
+        
+        <div class="courses-container">
+            <div class="filters-section">
+                <h3>Sort By</h3>
+                <div class="select-wrapper">
+                    <select id="sortOption" class="input-primary">
+                        <option value="" disabled selected>Choose an option</option>
+                        <option value="rating-high">Rating: High to Low</option>
+                        <option value="rating-low">Rating: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="newest">Newest</option>
+                    </select>
+                </div>
+                
+                <h3>Subject</h3>
+                <div class="select-wrapper">
+                    <select id="subjectSelect" class="input-primary">
+                        <option value="" selected>Choose an option</option>
+                        <option value="Math">Math</option>
+                        <option value="Physics">Physics</option>
+                        <option value="Chemistry">Chemistry</option>
+                        <option value="Biology">Biology</option>
+                        <option value="CS">Computer Science</option>
+                        <option value="History">History</option>
+                        <option value="Art">Art</option>
+                        <option value="Economics">Economics</option>
+                        <option value="English">English</option>
+                        <option value="Psychology">Psychology</option>
+                        <option value="Statistics">Statistics</option>
+                        <option value="Environment">Environment</option>
+                    </select>
+                </div>
+                
+                <h3>Academic Year</h3>
+                <div class="select-wrapper">
+                    <select id="academicYearOption" class="input-primary">
+                        <option value="" disabled selected>Choose an option</option>
+                        <option value="1">Year 1</option>
+                        <option value="2">Year 2</option>
+                        <option value="3">Year 3</option>
+                    </select>
+                </div>
+                
+                <h3>Price</h3>
+                <div class="price-range">
+                    <div class="price-inputs">
+                        <input type="text" id="minPrice" class="input-primary" placeholder="Minimum">
+                        <input type="text" id="maxPrice" class="input-primary" placeholder="Maximum">
+                    </div>
+                </div>
+                
+                <button id="resetFilters" class="reset-btn">Reset</button>
+            </div>
+            
+            <div class="courses-list">
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="Search..." class="input-primary">
+                    <button class="search-btn">
+                        <img src="{% static 'images/search-icon.png' %}" alt="Search">
+                    </button>
+                </div>
+                
+                <div class="courses-grid">
+                    {% for course in courses %}
+                    <div class="course-card">
+                        <div class="course-image"></div>
+                        <div class="course-info">
+                            <h3 class="course-name">{{ course.cname }}</h3>
+                            <p class="teacher-name">{{ course.teacher_name }}</p>
+                            <div class="rating">{{ course.rating }}/10</div>
+                            <a href="{% url 'course' course.cid 0 %}" class="enroll-btn">Enroll</a>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <p class="no-courses">No courses found matching your criteria.</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'js/courses_dashboard.js' %}"></script>
+{% endblock body %}

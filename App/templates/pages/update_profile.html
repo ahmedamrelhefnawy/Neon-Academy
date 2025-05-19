@@ -8,7 +8,7 @@
     <div class="content profile">
         <h2 class="main-header profile">My Profile</h2>
         <div class="profile-container">
-            <form id="updateProfileForm", method="POST"">
+            <form id="updateProfileForm", method="POST">
                 {% csrf_token %}
                 <div class="profile-layout">
                     <!-- Left Column: Profile Photo, First Name, Last Name, Date of Birth -->
@@ -72,11 +72,13 @@
                             <p>{{ success }}</p>
                         {% endif %}
                         </div>
-                        <div class="submit">
-                            <button type="submit" class="submit-btn primary">Update My Profile</button>
-                        </div>
+                    
+                    </div>
+                    <div class="submit">
+                    <button type="submit" class="submit-btn primary">Update My Profile</button>
                     </div>
                 </div>
+                
             </form>
         </div>
     </div>

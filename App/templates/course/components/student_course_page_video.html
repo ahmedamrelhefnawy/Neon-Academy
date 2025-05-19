@@ -1,0 +1,15 @@
+{% extends "course/base.html" %}
+{% load static %}
+{% block title %}Student Course Page - Video{% endblock title %}
+
+{% block body %}
+<main class="main-container">
+    <div class="exercise-left">
+        <div class="video-placeholder"></div>
+        <h1 class="video-title">Video Title</h1>
+        <p class="video-description">Description</p>
+    </div>
+    
+</main>
+<script src="{% static 'js/student_course_page_video.js' %}"></script>
+{% endblock body %}

@@ -1,0 +1,7 @@
+{% load static %}
+<div class="pdf-container">
+    <h1 class="file-name">{{current_object.title}}</h1>
+    <div class="document-content">
+        {{ current_object.content|safe }}
+    </div>
+</div>

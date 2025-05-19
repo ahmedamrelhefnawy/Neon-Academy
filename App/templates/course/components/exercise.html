@@ -1,0 +1,26 @@
+{% load static %}
+
+<div class="exercise-container" {% if exam.id %}data-exam-id="{{ exam.id }}"{% endif %}>
+    <h1 class="exercise-title">{{ exam.title }}</h1>
+
+    {% for question in exam.questions %}
+        <div class="question-section">
+            <p class="question-text">{{ question.text }}</p>
+            
+            {% if question.type == 'mcq' %}
+                <div class="mcq-options">
+                    {% for choice in question.choices %}
+                        <label>
+                            <input type="checkbox" name="question_{{ question.id }}" value="{{ choice.id }}" />
+                            <span class="choice-text">{{ choice.text }}</span>
+                        </label>
+                    {% endfor %}
+                </div>
+            {% elif question.type == 'text' %}
+                <input type="text" name="question_{{ question.id }}" placeholder="Answer the question" />
+            {% endif %}
+        </div>
+    {% endfor %}
+
+    <button class="submit-btn">Submit</button>
+</div>

@@ -12,13 +12,17 @@ def session_required(view_func):
         return view_func(request, *args, **kwargs)
     return _wrapped_view
 
-def session_exists(view_func):
+def require_no_session(view_func):
     def _wrapped_view(request, *args, **kwargs):
         if 'uid' in request.session and 'user_type' in request.session:
             if request.session['user_type'] == 'teacher':
                 return redirect('teacher_complete_account')
+            
             elif request.session['user_type'] == 'student':
-                return redirect('student_complete_account')
+                student_data = db.get_student_profile(request.session['uid'])
+                if student_data['picture'] != None:
+                    return redirect('dashboard/')
+            
             else:
                 del request.session['uid']
                 del request.session['user_type']
@@ -28,7 +32,7 @@ def session_exists(view_func):
     return _wrapped_view
 
 # Create your views here.
-@session_exists
+@require_no_session
 def teacher_sign_up(request):
     if request.method == 'POST':
         first_name = request.POST.get('firstName')
@@ -50,7 +54,7 @@ def teacher_sign_up(request):
 
     return render(request, 'pages/teacher_sign_up.html')
 
-@session_exists
+@require_no_session
 def student_sign_up(request):
     if request.method == 'POST':
         first_name = request.POST.get('firstName')
@@ -71,7 +75,7 @@ def student_sign_up(request):
     return render(request, 'pages/student_sign_up.html')
 
 
-@session_exists
+@require_no_session
 def sign_in(request):
     if request.method == 'POST':
         email = request.POST.get('email')
@@ -105,18 +109,7 @@ def update_profile(request):
         pass
     elif request.session['user_type'] == 'student':
         student_data = db.get_student_profile(request.session['uid'])
-        student_data = {
-            'uid': student_data[0],
-            'fname': student_data[1],
-            'lname': student_data[2],
-            'email': student_data[3],
-            'dob': student_data[4],
-            'picture': student_data[6],
-            'phone': student_data[7],
-            'academic_year': student_data[8],
-            'password': student_data[9],
-        }
-        
+        print(student_data)
         if request.method == 'POST':
             try:
                 student_data['fname'] = request.POST.get('firstName')
@@ -163,11 +156,11 @@ def update_profile(request):
             
         return render(request, 'pages/update_profile.html', {'student_data': student_data})
 
-@session_exists
+@require_no_session
 def forgot_password(request):
     return render(request, 'pages/forgot_password.html')
 
-@session_exists
+@require_no_session
 def reset_password(request):
     return render(request, 'pages/reset_password.html')
 
@@ -178,3 +171,80 @@ def logout(request):
         del request.session['user_type']
     
     return redirect('sign_in')
+
+@session_required
+def courses_dashboard(request):
+    """
+    View for the courses dashboard page with filtering and search functionality
+    """
+    
+    search_query = request.GET.get('search', '')
+    sort_by = request.GET.get('sort', '')
+    academic_year = request.GET.get('year', '')
+    subject = request.GET.get('subject', None)
+    min_price = request.GET.get('min_price', '')
+    max_price = request.GET.get('max_price', '')
+    
+    # Get the best sellers courses
+    best_sellers = db.get_top_courses()
+    
+    # Set up filters for the search_courses stored procedure
+    min_rate = None
+    max_rate = None
+    
+    # Apply sorting logic
+    if sort_by == 'rating-high':
+        min_rate = 0
+        max_rate = 10
+    elif sort_by == 'rating-low':
+        min_rate = 0
+        max_rate = 10
+        # We'll need to reverse the result later
+    
+    # Convert academic year to int if provided
+    acad_year = int(academic_year) if academic_year and academic_year.isdigit() else None
+    
+    # Convert price filters to decimal if provided
+    min_price_val = float(min_price) if min_price and min_price.replace('.', '', 1).isdigit() else None
+    max_price_val = float(max_price) if max_price and max_price.replace('.', '', 1).isdigit() else None
+    
+    courses = db.search_courses(search_query, subject, max_rate, min_rate, acad_year, max_price_val, min_price_val)        
+    
+    # Apply additional sorting if needed
+    if sort_by == 'rating-low':
+        courses = courses[::-1]  # Reverse the list for rating low to high
+    elif sort_by == 'price-high' and courses:
+        courses.sort(key=lambda x: x['price'] if x['price'] is not None else 0, reverse=True)
+    elif sort_by == 'price-low' and courses:
+        courses.sort(key=lambda x: x['price'] if x['price'] is not None else 0)
+    elif sort_by == 'newest' and courses:
+        # This would require creation_date in the result, 
+        # which might need a modification of the stored procedure
+        pass
+    context = {
+        'best_sellers': best_sellers,
+        'courses': courses,
+        'search_query': search_query,
+        'sort_by': sort_by,
+        'academic_year': academic_year,
+        'subject': subject,
+        'min_price': min_price,
+        'max_price': max_price
+    }
+    
+    return render(request, 'pages/courses_dashboard.html', context)
+
+def enroll_course(request, course_id):
+    """
+    View for enrolling in a course
+    """
+    if request.method == 'POST':
+        student_id = request.session['uid']
+        result = db.enroll_course(student_id, course_id)
+        
+        if result:
+            return redirect('course')
+        else:
+            return HttpResponse("Error enrolling in course")
+    
+    return HttpResponse("Invalid request method")

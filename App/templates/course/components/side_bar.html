@@ -1,0 +1,21 @@
+{% load static %}
+
+
+<div class="course-progress">
+    <p class="course-name">{{ course.cname }}</p>
+    <p class="progress-text">Progress <span class="progress-percent">{{ progress_percent }}</span></p>
+</div>
+{% for section in side_bar.sections %}
+<div class="section">
+    <div class="section-header">Section {{ forloop.counter }}<img src="{% static 'images/down-arrow2.png' %}" alt="Arrow" class="arrow-icon"></div>
+    <div class="section-content">
+        {% for object in section.objects %}
+        <div class="object {% if object.active %}active{% endif %}">
+            <img src="{% static 'images/tdesign_icon.png' %}" class="object-icon">
+            <span class="object-name">{{ object.title }}</span>
+            <span class="object-number">{{ object.o_order }}</span>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endfor %}

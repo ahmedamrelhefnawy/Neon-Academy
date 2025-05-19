@@ -1,0 +1,10 @@
+{% load static %}
+
+<div class="document-container">
+    <h1 class="document-title">{{ current_object.title }}</h1>
+    <div class="document-content">
+        {{ current_object.description|safe }}
+    </div>
+
+    <a href="{% url 'download_file' current_object.oid %}" class="download-btn">Download Document</a>
+</div>
