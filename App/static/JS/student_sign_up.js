@@ -161,7 +161,6 @@ window.onload = function() {
 };
 // Date of Birth Selector End
 
-
 // Academic Year Selector
 window.addEventListener("DOMContentLoaded", function () {
     const academicYearSelect = document.getElementById("academicYear");
@@ -171,21 +170,21 @@ window.addEventListener("DOMContentLoaded", function () {
     }
 
     function populateAcademicYears() {
-        const currentYear = new Date().getFullYear();
-        const startYear = currentYear - 10;
-        const endYear = currentYear + 1;
-
-        for (let i = startYear; i <= endYear; i++) {
-            const nextYear = i + 1;
+        academicYearSelect.innerHTML = "";
+        const years = [
+            { label: "Year 1", value: "1" },
+            { label: "Year 2", value: "2" },
+            { label: "Year 3", value: "3" }
+        ];
+        years.forEach(year => {
             const option = document.createElement("option");
-            option.value = `${i}/${nextYear}`;
-            option.textContent = `${i} / ${nextYear}`;
+            option.value = year.value;
+            option.textContent = year.label;
             academicYearSelect.appendChild(option);
-        }
+        });
     }
 });
 // Academic Year Selector End
-
 
 // Phone Number Checker (Egypt Only for now)
 const phoneInput = document.querySelector(".phone-number");
@@ -261,10 +260,7 @@ function validateStudentSignUpForm(event) {
     else {
         phoneLabel.classList.remove("error");
     }
-    if (!isFileNameValid) {
-        profilePictureLabel.classList.add("error");
-    }  
-    if (!isPasswordValid) {
+    if (!isPasswordValid && passwordInput.value == "") {
         passwordLabel.classList.add("error");
     }  
     else {
