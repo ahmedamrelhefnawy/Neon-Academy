@@ -13,7 +13,8 @@
     <h2 class="main-header">Complete Your Account</h2>
 
     <div class="form-box">
-      <form id="studentCompleteAccount">
+      <form id="studentCompleteAccount" method="post">
+        {% csrf_token %}
         <label for="AuthenticationFile" class="primary authentication-file-label">Profile Picture (Optional)</label>
 
         <div class="file-upload">

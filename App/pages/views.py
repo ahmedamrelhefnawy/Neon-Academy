@@ -68,6 +68,13 @@ def student_sign_up(request):
         phone_number = request.POST.get('phoneNumber')
 
         if db.call_create_student_account_sp(first_name, last_name, email, dob, password, gender, academic_year, phone_number):
+            uid, user_type = db.call_authenticate_user_sp(email, password)
+            # Save user data
+            types = ['student', 'teacher']
+            request.session['uid'] = uid
+            request.session['user_type'] = types[user_type]
+            
+            # Redirect to the complete account page
             return redirect('student_complete_account')
 
     return render(request, 'pages/student_sign_up.html')
@@ -99,6 +106,14 @@ def teacher_complete_account(request):
 
 @session_required
 def student_complete_account(request):
+    if request.method == 'POST':
+        print(request.POST)
+        picture = request.POST.get('AuthenticationFile')
+        picture = b'picture'
+        
+        if picture and db.add_student_photo(request.session['uid'], picture):
+            # Redirect to the dashboard or any other page
+            return redirect('courses_dashboard')
     return render(request, 'pages/student_complete_account.html')
 
 @session_required

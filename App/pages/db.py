@@ -46,13 +46,15 @@ def call_create_student_account_sp(fname, lname, email, dob, password, gender, a
         try:
             sp_name = "create_student_account"
             query = f'''
-            declare @result int
-            EXEC @result = {sp_name} %s, %s, %s, %s, %s, %s, %s, %s
-            select @result
+            declare @result int;
+            EXEC @result = {sp_name} %s, %s, %s, %s, %s, %s, %s, %s;
+            select @result;
             '''
             params = [fname, lname, email, dob, password, gender, academicYear, phone_number]
+            print(params)
             cursor.execute(query, params)
             result = cursor.fetchone()[0]
+            
             if result == -1:
                 return False
             else:
@@ -163,6 +165,19 @@ def enroll_course(
             cursor.execute(query, params)
             result = cursor.fetchone()[0]
             return result == 0
+        except Exception as e:
+            print("Error while calling stored procedure: ", e)
+            return False
+
+def add_student_photo(student_id, photo):
+    with connection.cursor() as cursor:
+        try:
+            sp_name = "add_student_photo"
+            query = f"EXEC {sp_name} %s, %s"
+            params = [student_id, photo]
+            cursor.execute(query, params)
+            
+            return True
         except Exception as e:
             print("Error while calling stored procedure: ", e)
             return False

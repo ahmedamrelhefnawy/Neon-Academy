@@ -14,12 +14,14 @@ create table app_user(
 	phone varchar(11) unique,
 	primary key (uid)
 	);
+
 create table student(
 	sid int not null,
-	acad_year int CHECK (acad_year > 0),
+	acad_year varchar(50) CHECK (acad_year > 0),
 	foreign key (sid) references app_user(uid) ON DELETE CASCADE,
 	primary key (sid)
 	);
+
 create table teacher(
 	tid int not null,
 	auth_doc VARBINARY(max),

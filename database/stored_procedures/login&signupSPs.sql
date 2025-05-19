@@ -115,3 +115,18 @@ BEGIN
         SET @user_type = -1;
     END
 END;
+go
+
+CREATE PROCEDURE add_student_photo
+    @sid INT,
+    @photo VARBINARY(MAX)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    UPDATE app_user
+    SET picture = @photo
+    WHERE uid = @sid;
+
+    RETURN 0;
+END
